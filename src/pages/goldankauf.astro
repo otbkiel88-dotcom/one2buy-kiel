@@ -1,0 +1,96 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config/site';
+---
+
+<BaseLayout
+  title="Goldankauf"
+  description="ONE 2 BUY Kiel kauft Gold und Silber zu fairen Marktpreisen. Schmuck, Münzen, Zahngold, Bruchgold – sofortige Barzahlung in Kiel."
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-yellow-700 via-yellow-600 to-yellow-500 text-white py-14 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <div class="text-6xl mb-4">🥇</div>
+      <h1 class="text-4xl md:text-5xl font-black mb-4">Gold & Silber Ankauf</h1>
+      <p class="text-xl text-yellow-100 mb-6">Faire Marktpreise · Sofortige Barzahlung · Diskret & Seriös</p>
+      <a href={SITE.shop.phoneHref} class="inline-block px-8 py-4 bg-white text-yellow-700 hover:bg-yellow-50 font-bold text-lg rounded-lg transition-colors shadow-lg">
+        📞 Jetzt anrufen: {SITE.shop.phone}
+      </a>
+    </div>
+  </section>
+
+  <!-- Was wir ankaufen -->
+  <section class="py-14 bg-white">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-black text-center text-brand-blue mb-10">Was wir ankaufen</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {[
+          { icon: '💍', title: 'Goldschmuck', text: 'Ringe, Ketten, Armbänder, Ohrringe – egal ob alt, beschädigt oder unmodern.' },
+          { icon: '🥈', title: 'Silberschmuck & -besteck', text: 'Silberschmuck, Tafelsilber, Besteck, Münzen und andere Silbergegenstände.' },
+          { icon: '🪙', title: 'Goldmünzen & -barren', text: 'Krügerrand, Maple Leaf, Goldbarren, historische Goldmünzen aller Art.' },
+          { icon: '🦷', title: 'Zahngold', text: 'Alte Zahnkronen und Brücken aus Gold werden fair nach Gewicht und Feingehalt vergütet.' },
+          { icon: '🔗', title: 'Bruchgold', text: 'Zerbrochene oder beschädigte Goldgegenstände – wir kaufen auch Bruchgold an.' },
+          { icon: '⌚', title: 'Uhren', text: 'Hochwertige Uhren aus Gold oder mit Goldgehäuse werden separat bewertet.' },
+        ].map((item) => (
+          <div class="bg-gray-50 rounded-xl p-6 border border-gray-100 hover:border-yellow-400 transition-colors">
+            <div class="text-4xl mb-3">{item.icon}</div>
+            <h3 class="text-xl font-bold text-brand-blue mb-2">{item.title}</h3>
+            <p class="text-gray-600 text-sm">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Ablauf -->
+  <section class="py-14 bg-yellow-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-black text-center text-brand-blue mb-10">So läuft der Ankauf ab</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+        {[
+          { step: '1', icon: '🚶', title: 'Kommen Sie vorbei', text: 'Bringen Sie Ihr Gold oder Silber zu uns – ohne Termin.' },
+          { step: '2', icon: '⚖️', title: 'Kostenlose Prüfung', text: 'Wir testen und wiegen Ihre Edelmetalle professionell und transparent.' },
+          { step: '3', icon: '🤝', title: 'Faires Angebot', text: 'Sie erhalten sofort ein Angebot nach aktuellem Marktpreis.' },
+          { step: '4', icon: '💵', title: 'Sofortige Auszahlung', text: 'Bei Einigkeit zahlen wir sofort bar aus.' },
+        ].map((step) => (
+          <div class="text-center p-6 bg-white rounded-xl shadow-sm relative">
+            <div class="absolute -top-4 left-1/2 -translate-x-1/2 w-8 h-8 bg-yellow-500 text-white rounded-full flex items-center justify-center font-black text-sm">
+              {step.step}
+            </div>
+            <div class="text-4xl mb-3 mt-2">{step.icon}</div>
+            <h3 class="font-bold text-brand-blue mb-2">{step.title}</h3>
+            <p class="text-gray-600 text-sm">{step.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Vertrauen -->
+  <section class="py-14 bg-white">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-black text-brand-blue mb-6">Seriös und diskret seit 1999</h2>
+      <p class="text-gray-600 text-lg leading-relaxed mb-8">
+        ONE 2 BUY Kiel ist Ihr vertrauenswürdiger Partner für Gold- und Silberankauf in Kiel.
+        Über 25 Jahre Erfahrung, transparente Bewertung und faire Marktpreise — das ist unser Versprechen.
+      </p>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-8">
+        <div class="p-4 bg-yellow-50 rounded-lg">
+          <div class="text-2xl font-black text-yellow-600">25+</div>
+          <div class="text-sm text-gray-600">Jahre Erfahrung</div>
+        </div>
+        <div class="p-4 bg-yellow-50 rounded-lg">
+          <div class="text-2xl font-black text-yellow-600">100%</div>
+          <div class="text-sm text-gray-600">Transparent & Fair</div>
+        </div>
+        <div class="p-4 bg-yellow-50 rounded-lg">
+          <div class="text-2xl font-black text-yellow-600">Sofort</div>
+          <div class="text-sm text-gray-600">Barzahlung</div>
+        </div>
+      </div>
+      <a href={SITE.shop.phoneHref} class="inline-block px-8 py-4 bg-brand-blue hover:bg-brand-blue-light text-white font-bold text-lg rounded-lg transition-colors">
+        Kontakt aufnehmen: {SITE.shop.phone}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

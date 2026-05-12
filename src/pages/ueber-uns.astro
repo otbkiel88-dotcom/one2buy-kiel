@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config/site';
+---
+
+<BaseLayout
+  title="Über uns"
+  description="ONE 2 BUY Kiel – seit 1999 Kiels größter und fairer First-Class An- & Verkauf. Erfahren Sie mehr über unser Unternehmen und unsere Werte."
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-brand-blue to-brand-blue-light text-white py-14 md:py-20">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-black mb-4">Über uns</h1>
+      <p class="text-xl text-blue-100">Kiel's vertrauenswürdiger Partner seit 1999</p>
+    </div>
+  </section>
+
+  <!-- Story -->
+  <section class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div>
+          <div class="text-7xl font-black text-brand-blue opacity-10 leading-none mb-2">1999</div>
+          <h2 class="text-3xl font-black text-brand-blue mb-6">Seit über 25 Jahren in Kiel</h2>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            ONE 2 BUY Kiel ist seit 1999 Ihr erster Ansprechpartner für An- und Verkauf in Kiel.
+            Was als kleines Geschäft begann, ist heute Kiels größter First-Class An- &amp; Verkauf.
+          </p>
+          <p class="text-gray-600 leading-relaxed mb-4">
+            Unser Erfolg basiert auf einem einfachen Prinzip: <strong>Faire Preise, schnelle Abwicklung und ehrlicher Service</strong>.
+            Wir behandeln jeden Kunden und jede Kundin so, wie wir selbst behandelt werden möchten.
+          </p>
+          <p class="text-gray-600 leading-relaxed">
+            Egal ob Sie ein altes Smartphone, eine Spielkonsole, Werkzeug oder Gold verkaufen möchten —
+            bei uns sind Sie in guten Händen.
+          </p>
+        </div>
+        <div class="space-y-4">
+          {[
+            { number: '25+', label: 'Jahre in Kiel', icon: '🏆' },
+            { number: 'Täglich', label: 'Neue Angebote', icon: '🛍️' },
+            { number: 'Sofort', label: 'Barzahlung beim Ankauf', icon: '💵' },
+            { number: '100%', label: 'Faire & transparente Preise', icon: '⭐' },
+          ].map((stat) => (
+            <div class="flex items-center gap-5 p-5 bg-gray-50 rounded-xl">
+              <div class="text-3xl">{stat.icon}</div>
+              <div>
+                <div class="text-2xl font-black text-brand-blue">{stat.number}</div>
+                <div class="text-gray-600 text-sm">{stat.label}</div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Werte -->
+  <section class="py-16 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <h2 class="text-3xl font-black text-center text-brand-blue mb-10">Unsere Werte</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        {[
+          { icon: '🤝', title: 'Fairness', text: 'Faire Preise beim Ankauf und fairer Umgang mit jedem Kunden — das ist das Fundament unseres Geschäfts.' },
+          { icon: '🔍', title: 'Transparenz', text: 'Wir erklären unsere Bewertungen offen und nachvollziehbar. Keine versteckten Abzüge, keine Überraschungen.' },
+          { icon: '⚡', title: 'Schnelligkeit', text: 'Ihre Zeit ist wertvoll. Schnelle Bewertung, sofortige Auszahlung — ohne langes Warten.' },
+        ].map((item) => (
+          <div class="bg-white rounded-xl p-8 shadow-sm text-center">
+            <div class="text-5xl mb-4">{item.icon}</div>
+            <h3 class="text-xl font-bold text-brand-blue mb-3">{item.title}</h3>
+            <p class="text-gray-600">{item.text}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-14 bg-brand-blue text-white">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-3xl font-black mb-4">Überzeugen Sie sich selbst</h2>
+      <p class="text-blue-200 mb-6">Besuchen Sie uns in Kiel am Sophienblatt 19 oder rufen Sie uns an.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href={SITE.shop.phoneHref} class="px-8 py-3 bg-brand-red hover:bg-brand-red-dark font-bold rounded-lg transition-colors">
+          📞 {SITE.shop.phone}
+        </a>
+        <a href="/kontakt" class="px-8 py-3 bg-white text-brand-blue hover:bg-blue-50 font-bold rounded-lg transition-colors">
+          Kontakt aufnehmen
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

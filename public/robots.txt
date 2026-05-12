@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://one2buy-kiel.de/sitemap-index.xml

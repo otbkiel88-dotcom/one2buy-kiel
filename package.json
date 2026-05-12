@@ -1,0 +1,22 @@
+{
+  "name": "one2buy-kiel",
+  "version": "1.0.0",
+  "description": "ONE 2 BUY Kiel – An- und Verkauf",
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "keywords": [],
+  "author": "Juliette Petersen",
+  "license": "ISC",
+  "dependencies": {
+    "@astrojs/sitemap": "^3.7.2",
+    "@astrojs/tailwind": "^6.0.2",
+    "@tailwindcss/vite": "^4.3.0",
+    "astro": "^6.3.1",
+    "fast-xml-parser": "^5.8.0",
+    "tailwindcss": "^4.3.0"
+  }
+}

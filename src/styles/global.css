@@ -1,0 +1,18 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-blue: #003087;
+  --color-brand-blue-dark: #002060;
+  --color-brand-blue-light: #1a4fa0;
+  --color-brand-red: #cc0000;
+  --color-brand-red-dark: #990000;
+  --color-brand-red-light: #e60000;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Arial, sans-serif;
+}

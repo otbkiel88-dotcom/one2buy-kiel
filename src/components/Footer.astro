@@ -1,0 +1,75 @@
+---
+import { SITE } from '../config/site';
+---
+
+<footer class="bg-brand-blue-dark text-white mt-auto">
+  <div class="max-w-7xl mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <!-- Brand -->
+      <div>
+        <a href="/" class="flex items-center gap-3 mb-4 hover:opacity-85 transition-opacity" aria-label="ONE 2 BUY Kiel – Startseite">
+          <img
+            src="/logo.png"
+            alt="ONE 2 BUY Kiel"
+            class="h-12 w-auto object-contain"
+          />
+          <span class="text-xl font-black tracking-tight">ONE <span class="text-brand-red">2</span> BUY</span>
+        </a>
+        <p class="text-blue-200 text-sm leading-relaxed">
+          Kiels größter und fairer First-Class An- &amp; Verkauf seit 1999.<br />
+          Wir kaufen und verkaufen: Elektronik, Smartphones, Spielekonsolen, Gold, Silber und mehr.
+        </p>
+        <a
+          href={SITE.ebay.storeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-block mt-4 px-4 py-2 bg-brand-red hover:bg-brand-red-dark text-sm font-bold rounded-md transition-colors"
+        >
+          Unser eBay Shop →
+        </a>
+      </div>
+
+      <!-- Öffnungszeiten -->
+      <div>
+        <h3 class="text-lg font-bold mb-4 text-yellow-300">Öffnungszeiten</h3>
+        <ul class="space-y-2 text-sm text-blue-200">
+          {SITE.hours.map((h) => (
+            <li class="flex justify-between gap-4">
+              <span>{h.days}</span>
+              <span class={h.closed ? 'text-red-400' : 'text-white font-medium'}>{h.time}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <!-- Kontakt & Links -->
+      <div>
+        <h3 class="text-lg font-bold mb-4 text-yellow-300">Kontakt</h3>
+        <address class="not-italic text-sm text-blue-200 space-y-2">
+          <p>{SITE.shop.address}, {SITE.shop.zip} {SITE.shop.city}</p>
+          <p>
+            <a href={SITE.shop.phoneHref} class="hover:text-white transition-colors">
+              📞 {SITE.shop.phone}
+            </a>
+          </p>
+          <p>
+            <a href={SITE.shop.emailHref} class="hover:text-white transition-colors">
+              ✉ {SITE.shop.email}
+            </a>
+          </p>
+        </address>
+        <div class="mt-6 flex flex-col gap-1 text-sm">
+          <a href="/impressum" class="text-blue-300 hover:text-white transition-colors">Impressum</a>
+          <a href="/datenschutz" class="text-blue-300 hover:text-white transition-colors">Datenschutz</a>
+          <a href="/kontakt" class="text-blue-300 hover:text-white transition-colors">Kontakt</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="border-t border-brand-blue-light">
+    <div class="max-w-7xl mx-auto px-4 py-4 text-center text-xs text-blue-300">
+      © {new Date().getFullYear()} ONE 2 BUY Kiel – Juliette Petersen. Alle Rechte vorbehalten.
+    </div>
+  </div>
+</footer>

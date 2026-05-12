@@ -1,0 +1,114 @@
+---
+import { SITE } from '../config/site';
+const currentPath = Astro.url.pathname;
+---
+
+<header class="bg-brand-blue text-white shadow-lg sticky top-0 z-50">
+  <!-- Top info bar -->
+  <div class="bg-brand-blue-dark text-sm hidden md:block">
+    <div class="max-w-7xl mx-auto px-4 py-1.5 flex justify-between items-center">
+      <span>Kiels größter An- &amp; Verkauf seit 1999</span>
+      <div class="flex gap-6">
+        <a href={SITE.shop.phoneHref} class="hover:text-yellow-300 transition-colors">
+          📞 {SITE.shop.phone}
+        </a>
+        <a href={SITE.shop.emailHref} class="hover:text-yellow-300 transition-colors">
+          ✉ {SITE.shop.email}
+        </a>
+        <span>Mo–Fr 9–19 | Sa 10–18</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main nav -->
+  <div class="max-w-7xl mx-auto px-4">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Logo -->
+      <a href="/" class="flex items-center gap-3 hover:opacity-90 transition-opacity" aria-label="ONE 2 BUY Kiel – Startseite">
+        <img
+          src="/logo.png"
+          alt="ONE 2 BUY Kiel"
+          class="h-9 w-auto md:h-14 object-contain"
+        />
+        <span class="font-black text-lg md:text-2xl tracking-tight text-white">
+          ONE <span class="text-brand-red">2</span> BUY
+        </span>
+      </a>
+
+      <!-- Desktop nav -->
+      <nav class="hidden lg:flex items-center gap-1">
+        {SITE.nav.map((item) => (
+          <a
+            href={item.href}
+            class={`px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-brand-blue-light ${
+              currentPath === item.href ? 'bg-brand-blue-light' : ''
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+        <a
+          href={SITE.ebay.storeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ml-2 px-4 py-2 bg-brand-red hover:bg-brand-red-dark rounded-md text-sm font-bold transition-colors"
+        >
+          eBay Shop
+        </a>
+      </nav>
+
+      <!-- Mobile hamburger -->
+      <button
+        id="menu-btn"
+        aria-label="Menü öffnen"
+        aria-expanded="false"
+        class="lg:hidden p-2 rounded-md hover:bg-brand-blue-light transition-colors"
+      >
+        <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all" id="bar1"></span>
+        <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all" id="bar2"></span>
+        <span class="block w-6 h-0.5 bg-white transition-all" id="bar3"></span>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <nav id="mobile-menu" class="lg:hidden hidden pb-4">
+      <div class="flex flex-col gap-1">
+        {SITE.nav.map((item) => (
+          <a
+            href={item.href}
+            class={`px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-brand-blue-light ${
+              currentPath === item.href ? 'bg-brand-blue-light' : ''
+            }`}
+          >
+            {item.label}
+          </a>
+        ))}
+        <a
+          href={SITE.shop.phoneHref}
+          class="px-3 py-2 text-sm font-medium text-yellow-300"
+        >
+          📞 {SITE.shop.phone}
+        </a>
+        <a
+          href={SITE.ebay.storeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="mt-2 px-4 py-2 bg-brand-red hover:bg-brand-red-dark rounded-md text-sm font-bold text-center transition-colors"
+        >
+          eBay Shop
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+
+  btn?.addEventListener('click', () => {
+    const isOpen = !menu?.classList.contains('hidden');
+    menu?.classList.toggle('hidden');
+    btn.setAttribute('aria-expanded', String(!isOpen));
+  });
+</script>

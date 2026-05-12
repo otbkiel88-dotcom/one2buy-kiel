@@ -1,0 +1,92 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../config/site';
+
+interface Props {
+  title: string;
+  description?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description = 'ONE 2 BUY Kiel – Kiels größter An- & Verkauf seit 1999. Smartphones, Elektronik, Konsolen, Gold & Silber ankauf. Faire Preise, schnelle Abwicklung.',
+  image = '/og-image.jpg',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, SITE.url);
+const ogImage = new URL(image, SITE.url);
+
+const ldJson = {
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "ONE 2 BUY Kiel",
+  "description": "Kiels größter An- & Verkauf seit 1999",
+  "url": SITE.url,
+  "telephone": SITE.shop.phone,
+  "email": SITE.shop.email,
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": SITE.shop.address,
+    "postalCode": SITE.shop.zip,
+    "addressLocality": SITE.shop.city,
+    "addressCountry": "DE"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "10:00",
+      "closes": "18:00"
+    }
+  ],
+  "sameAs": [SITE.ebay.storeUrl]
+};
+---
+
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title} | ONE 2 BUY Kiel</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={`${title} | ONE 2 BUY Kiel`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:locale" content="de_DE" />
+    <meta property="og:site_name" content="ONE 2 BUY Kiel" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${title} | ONE 2 BUY Kiel`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(ldJson)} />
+
+    <link rel="icon" type="image/png" href="/logo.png" />
+  </head>
+  <body class="bg-white text-gray-900 min-h-screen flex flex-col">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,93 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config/site';
+---
+
+<BaseLayout
+  title="Kontakt"
+  description="ONE 2 BUY Kiel erreichen – Sophienblatt 19, 24103 Kiel. Telefon: 0431 6004839. Mo–Fr 9–19 Uhr, Sa 10–18 Uhr. Kommen Sie einfach vorbei!"
+>
+  <!-- Hero -->
+  <section class="bg-brand-blue text-white py-14">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-black mb-4">Kontakt</h1>
+      <p class="text-xl text-blue-100">Wir sind für Sie da</p>
+    </div>
+  </section>
+
+  <section class="py-14 bg-gray-50">
+    <div class="max-w-5xl mx-auto px-4">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <!-- Kontaktinfos -->
+        <div class="space-y-5">
+          <h2 class="text-2xl font-black text-brand-blue">So erreichen Sie uns</h2>
+
+          <a href={SITE.shop.phoneHref} class="flex gap-5 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow group">
+            <div class="text-4xl">📞</div>
+            <div>
+              <div class="text-sm text-gray-500 mb-1">Telefon</div>
+              <div class="text-xl font-bold text-brand-blue group-hover:text-brand-red transition-colors">{SITE.shop.phone}</div>
+              <div class="text-sm text-gray-500 mt-1">Mo–Fr 9–19 · Sa 10–18 Uhr</div>
+            </div>
+          </a>
+
+          <a href={SITE.shop.emailHref} class="flex gap-5 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow group">
+            <div class="text-4xl">✉</div>
+            <div>
+              <div class="text-sm text-gray-500 mb-1">E-Mail</div>
+              <div class="text-lg font-bold text-brand-blue group-hover:text-brand-red transition-colors break-all">{SITE.shop.email}</div>
+            </div>
+          </a>
+
+          <a href={SITE.shop.mapsUrl} target="_blank" rel="noopener noreferrer" class="flex gap-5 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow group">
+            <div class="text-4xl">📍</div>
+            <div>
+              <div class="text-sm text-gray-500 mb-1">Adresse</div>
+              <div class="font-bold text-gray-800">{SITE.shop.address}</div>
+              <div class="text-gray-600">{SITE.shop.zip} {SITE.shop.city}</div>
+              <div class="text-sm text-brand-blue group-hover:underline mt-1">Route planen →</div>
+            </div>
+          </a>
+
+          <a href={SITE.ebay.storeUrl} target="_blank" rel="noopener noreferrer" class="flex gap-5 p-6 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow group">
+            <div class="text-4xl">🛒</div>
+            <div>
+              <div class="text-sm text-gray-500 mb-1">eBay Shop</div>
+              <div class="font-bold text-brand-blue group-hover:text-brand-red transition-colors">{SITE.ebay.seller}</div>
+              <div class="text-sm text-gray-500 mt-1">Alle aktuellen Angebote →</div>
+            </div>
+          </a>
+        </div>
+
+        <!-- Öffnungszeiten + Karte -->
+        <div class="space-y-5">
+          <div class="bg-brand-blue text-white rounded-xl p-8">
+            <h3 class="text-xl font-black mb-5 text-yellow-300">Öffnungszeiten</h3>
+            <div class="space-y-3">
+              {SITE.hours.map((h) => (
+                <div class="flex justify-between items-center py-2 border-b border-brand-blue-light last:border-0">
+                  <span class="text-blue-200">{h.days}</span>
+                  <span class={`font-semibold ${h.closed ? 'text-red-400' : 'text-white'}`}>{h.time}</span>
+                </div>
+              ))}
+            </div>
+            <p class="text-blue-200 text-sm mt-5">Kein Termin nötig — einfach vorbeikommen!</p>
+          </div>
+
+          <div class="rounded-xl overflow-hidden shadow-lg h-64">
+            <iframe
+              src={SITE.shop.mapsEmbed}
+              width="100%"
+              height="100%"
+              style="border:0;"
+              allowfullscreen
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              title="ONE 2 BUY Kiel auf Google Maps"
+            ></iframe>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

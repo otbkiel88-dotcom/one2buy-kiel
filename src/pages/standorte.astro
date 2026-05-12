@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config/site';
+---
+
+<BaseLayout
+  title="Standort"
+  description="ONE 2 BUY Kiel, Sophienblatt 19, 24103 Kiel. Öffnungszeiten: Mo–Fr 9–19 Uhr, Sa 10–18 Uhr. Parkplätze vorhanden. Einfach vorbeikommen!"
+>
+  <!-- Hero -->
+  <section class="bg-brand-blue text-white py-14">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-black mb-4">Unser Standort</h1>
+      <p class="text-xl text-blue-100">Mitten in Kiel – einfach zu erreichen</p>
+    </div>
+  </section>
+
+  <!-- Info + Karte -->
+  <section class="py-14 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+        <!-- Info -->
+        <div class="space-y-6">
+          <div class="bg-white rounded-xl p-8 shadow-sm">
+            <h2 class="text-2xl font-black text-brand-blue mb-6">ONE 2 BUY Kiel</h2>
+            <div class="space-y-4">
+              <div class="flex gap-4">
+                <span class="text-2xl">📍</span>
+                <div>
+                  <div class="font-semibold text-gray-800">{SITE.shop.address}</div>
+                  <div class="text-gray-600">{SITE.shop.zip} {SITE.shop.city}</div>
+                  <a
+                    href={SITE.shop.mapsUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-sm text-brand-blue hover:underline mt-1 inline-block"
+                  >
+                    Route planen →
+                  </a>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="text-2xl">📞</span>
+                <div>
+                  <a href={SITE.shop.phoneHref} class="font-semibold text-gray-800 hover:text-brand-blue transition-colors">
+                    {SITE.shop.phone}
+                  </a>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <span class="text-2xl">✉</span>
+                <div>
+                  <a href={SITE.shop.emailHref} class="font-semibold text-gray-800 hover:text-brand-blue transition-colors">
+                    {SITE.shop.email}
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Öffnungszeiten -->
+          <div class="bg-white rounded-xl p-8 shadow-sm">
+            <h3 class="text-xl font-black text-brand-blue mb-5">Öffnungszeiten</h3>
+            <div class="space-y-3">
+              {SITE.hours.map((h) => (
+                <div class={`flex justify-between items-center py-2 border-b border-gray-100 last:border-0 ${h.closed ? 'opacity-60' : ''}`}>
+                  <span class="text-gray-700 font-medium">{h.days}</span>
+                  <span class={`font-semibold ${h.closed ? 'text-red-500' : 'text-brand-blue'}`}>{h.time}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <!-- Anfahrt -->
+          <div class="bg-brand-blue text-white rounded-xl p-8">
+            <h3 class="text-xl font-black mb-4">Anfahrt</h3>
+            <ul class="space-y-3 text-blue-100 text-sm">
+              <li class="flex gap-3"><span>🚌</span><span>Bushaltestelle <strong class="text-white">Sophienblatt</strong> direkt vor der Tür (Linien 51, 61, 62, 91)</span></li>
+              <li class="flex gap-3"><span>🚂</span><span>Fußläufig vom <strong class="text-white">Hauptbahnhof Kiel</strong> (ca. 10 Minuten)</span></li>
+              <li class="flex gap-3"><span>🚗</span><span>Parkmöglichkeiten in der Umgebung vorhanden</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Google Maps -->
+        <div class="rounded-xl overflow-hidden shadow-lg" style="min-height: 500px;">
+          <iframe
+            src={SITE.shop.mapsEmbed}
+            width="100%"
+            height="100%"
+            style="border:0; min-height: 500px;"
+            allowfullscreen
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="ONE 2 BUY Kiel auf Google Maps – Sophienblatt 19"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-12 bg-brand-red text-white">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-black mb-3">Wir freuen uns auf Ihren Besuch!</h2>
+      <p class="text-red-100 mb-5">Kein Termin nötig – einfach vorbeikommen.</p>
+      <a href={SITE.shop.phoneHref} class="inline-block px-8 py-3 bg-white text-brand-red hover:bg-red-50 font-bold rounded-lg transition-colors">
+        📞 {SITE.shop.phone}
+      </a>
+    </div>
+  </section>
+</BaseLayout>

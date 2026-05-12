@@ -1,0 +1,157 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE } from '../config/site';
+import { XMLParser } from 'fast-xml-parser';
+
+interface EbayItem {
+  title: string;
+  link: string;
+  description?: string;
+  pubDate?: string;
+  imageUrl?: string;
+}
+
+let ebayItems: EbayItem[] = [];
+let fetchError = false;
+
+try {
+  const res = await fetch(SITE.ebay.rssUrl, {
+    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; Astro/1.0)' },
+    signal: AbortSignal.timeout(8000),
+  });
+
+  if (res.ok) {
+    const xml = await res.text();
+    const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@_' });
+    const result = parser.parse(xml);
+    const rawItems = result?.rss?.channel?.item ?? [];
+    const items = Array.isArray(rawItems) ? rawItems : [rawItems];
+
+    ebayItems = items.slice(0, 24).map((item: Record<string, unknown>) => {
+      const desc = String(item.description ?? '');
+      const imgMatch = desc.match(/src=["']([^"']+)["']/);
+      return {
+        title: String(item.title ?? ''),
+        link: String(item.link ?? ''),
+        description: desc.replace(/<[^>]+>/g, '').trim().slice(0, 120),
+        pubDate: item.pubDate ? new Date(String(item.pubDate)).toLocaleDateString('de-DE') : undefined,
+        imageUrl: imgMatch?.[1],
+      };
+    });
+  }
+} catch {
+  fetchError = true;
+}
+---
+
+<BaseLayout
+  title="Verkauf – Unsere Angebote"
+  description="Aktuelle Angebote von ONE 2 BUY Kiel auf eBay – Smartphones, Elektronik, Konsolen, Spiele, Werkzeug und mehr. Faire Preise, geprüfte Qualität."
+>
+  <!-- Hero -->
+  <section class="bg-gradient-to-br from-brand-blue to-brand-blue-light text-white py-14">
+    <div class="max-w-7xl mx-auto px-4 text-center">
+      <h1 class="text-4xl md:text-5xl font-black mb-4">Unsere Angebote</h1>
+      <p class="text-xl text-blue-100 mb-6">Geprüfte Qualität – Faire Preise – Direkt auf eBay</p>
+      <a
+        href={SITE.ebay.storeUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block px-8 py-4 bg-brand-red hover:bg-brand-red-dark font-bold text-lg rounded-lg transition-colors"
+      >
+        Zum eBay Shop →
+      </a>
+    </div>
+  </section>
+
+  <!-- eBay Items -->
+  <section class="py-14 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4">
+      {fetchError || ebayItems.length === 0 ? (
+        <div class="text-center py-16">
+          <div class="text-6xl mb-6">🛒</div>
+          <h2 class="text-2xl font-bold text-brand-blue mb-4">Aktuelle Angebote auf eBay</h2>
+          <p class="text-gray-600 mb-8 max-w-md mx-auto">
+            Alle unsere aktuellen Artikel finden Sie direkt in unserem eBay-Shop.
+            Täglich neue Angebote!
+          </p>
+          <a
+            href={SITE.ebay.storeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-block px-10 py-4 bg-brand-red hover:bg-brand-red-dark text-white font-bold text-xl rounded-lg transition-colors shadow-lg"
+          >
+            Jetzt auf eBay stöbern →
+          </a>
+          <p class="mt-4 text-sm text-gray-500">
+            eBay-Shop: <a href={SITE.ebay.storeUrl} class="text-brand-blue hover:underline" target="_blank" rel="noopener">{SITE.ebay.seller}</a>
+          </p>
+        </div>
+      ) : (
+        <>
+          <div class="flex items-center justify-between mb-8">
+            <h2 class="text-2xl font-black text-brand-blue">{ebayItems.length} aktuelle Angebote</h2>
+            <a
+              href={SITE.ebay.storeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-brand-red font-semibold hover:underline text-sm"
+            >
+              Alle auf eBay ansehen →
+            </a>
+          </div>
+          <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+            {ebayItems.map((item) => (
+              <a
+                href={item.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="bg-white rounded-xl overflow-hidden shadow-sm hover:shadow-md transition-all group border border-gray-100 hover:border-brand-blue"
+              >
+                {item.imageUrl ? (
+                  <img
+                    src={item.imageUrl}
+                    alt={item.title}
+                    class="w-full aspect-square object-cover group-hover:scale-105 transition-transform"
+                    loading="lazy"
+                  />
+                ) : (
+                  <div class="w-full aspect-square bg-gray-100 flex items-center justify-center text-3xl">🛍️</div>
+                )}
+                <div class="p-3">
+                  <h3 class="text-xs font-semibold text-gray-800 line-clamp-2 group-hover:text-brand-blue transition-colors">
+                    {item.title}
+                  </h3>
+                  {item.pubDate && (
+                    <p class="text-xs text-gray-400 mt-1">{item.pubDate}</p>
+                  )}
+                </div>
+              </a>
+            ))}
+          </div>
+          <div class="text-center mt-10">
+            <a
+              href={SITE.ebay.storeUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="inline-block px-8 py-4 bg-brand-red hover:bg-brand-red-dark text-white font-bold text-lg rounded-lg transition-colors"
+            >
+              Alle Artikel auf eBay ansehen →
+            </a>
+          </div>
+        </>
+      )}
+    </div>
+  </section>
+
+  <!-- Info -->
+  <section class="py-10 bg-white border-t">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+      <h2 class="text-2xl font-black text-brand-blue mb-3">Suchen Sie etwas Bestimmtes?</h2>
+      <p class="text-gray-600 mb-4">Rufen Sie uns an – wir helfen Ihnen gerne weiter oder reservieren Artikel für Sie.</p>
+      <a href="tel:+4943160048039" class="inline-block px-6 py-3 bg-brand-blue hover:bg-brand-blue-light text-white font-bold rounded-lg transition-colors">
+        📞 0431 6004839
+      </a>
+    </div>
+  </section>
+</BaseLayout>
