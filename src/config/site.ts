@@ -1,7 +1,7 @@
 export const SITE = {
   name: 'ONE 2 BUY Kiel',
   tagline: 'Kiels größter An- & Verkauf seit 1999',
-  url: 'https://one2buy-kiel.de',
+  url: 'https://one2buy-kiel.de', 
   shop: {
     address: 'Sophienblatt 19',
     zip: '24103',
