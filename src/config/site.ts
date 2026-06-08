@@ -6,7 +6,7 @@ export const SITE = {
     address: 'Sophienblatt 19',
     zip: '24103',
     city: 'Kiel',
-    country: 'Deutschland',
+    country: 'Deutschland', 
     phone: '0431 6004839',
     phoneHref: 'tel:+4943160048039',
     email: 'otbkiel@web.de',
