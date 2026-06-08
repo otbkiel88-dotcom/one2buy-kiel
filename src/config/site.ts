@@ -25,9 +25,9 @@ export const SITE = {
     rssUrl: 'https://www.ebay.de/sch/i.html?_nkw=&_sasl=12ankaufonline&_sop=10&_rss=1',
   },
   impressum: {
-    name: 'Juliette Petersen',
-    address: 'Ascheberger Str. 4',
-    zip: '24143',
+    name: 'ONE 2 BUY Juliette Petersen',
+    address: 'Sophienblatt 19',
+    zip: '24103',
     city: 'Kiel',
     country: 'Deutschland',
     phone: '+49 431 6004839',
