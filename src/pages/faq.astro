@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FAQ – Ankauf & Verkauf in Kiel | ONE 2 BUY</title>
+<meta name="description" content="Häufige Fragen zum Ankauf und Verkauf von iPhones, Gold, Laptops, Spielekonsolen und Elektronik in Kiel. Sophienblatt 19, faire Preise, Barzahlung sofort.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0d0d;
+    --surface: #161616;
+    --surface2: #1e1e1e;
+    --accent: #f5c400;
+    --text: #f0ede8;
+    --muted: #888;
+    --border: #2a2a2a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { background: var(--bg); color: var(--text); font-family: 'DM Sans', sans-serif; font-size: 16px; line-height: 1.65; }
+ 
+  header { border-bottom: 1px solid var(--border); padding: 24px 40px; display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px; color: var(--accent); }
+  .logo span { color: var(--text); }
+  .header-info { font-size: 0.82rem; color: var(--muted); text-align: right; line-height: 1.5; }
+  .header-info a { color: var(--accent); text-decoration: none; }
+ 
+  .hero { padding: 70px 40px 50px; max-width: 860px; margin: 0 auto; }
+  .hero-tag { display: inline-block; background: var(--accent); color: #000; font-size: 0.7rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase; padding: 5px 14px; border-radius: 2px; margin-bottom: 22px; }
+  h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2.8rem, 6vw, 4.8rem); line-height: 1; letter-spacing: 1px; margin-bottom: 18px; }
+  h1 em { font-style: normal; color: var(--accent); }
+  .hero p { font-size: 1.05rem; color: var(--muted); max-width: 560px; }
+ 
+  .info-bar { max-width: 860px; margin: 0 auto 40px; padding: 0 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; }
+  .info-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; }
+  .info-card .label { font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  .info-card .value { font-size: 0.92rem; font-weight: 600; color: var(--text); line-height: 1.5; }
+  .info-card .value a { color: var(--accent); text-decoration: none; }
+ 
+  .cat-nav { padding: 0 40px 44px; max-width: 860px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 8px; }
+  .cat-btn { background: var(--surface); border: 1px solid var(--border); color: var(--text); padding: 7px 16px; border-radius: 100px; font-size: 0.82rem; cursor: pointer; transition: all 0.2s; font-family: 'DM Sans', sans-serif; }
+  .cat-btn:hover, .cat-btn.active { background: var(--accent); color: #000; border-color: var(--accent); }
+ 
+  .faq-wrap { max-width: 860px; margin: 0 auto; padding: 0 40px 100px; }
+  .faq-section { margin-bottom: 56px; }
+  .section-header { display: flex; align-items: center; gap: 14px; margin-bottom: 24px; }
+  .section-icon { width: 40px; height: 40px; background: var(--accent); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.2rem; flex-shrink: 0; }
+  h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.7rem; letter-spacing: 1px; color: var(--text); }
+ 
+  .faq-item { border: 1px solid var(--border); border-radius: 10px; margin-bottom: 8px; background: var(--surface); overflow: hidden; transition: border-color 0.2s; }
+  .faq-item:hover { border-color: #3a3a3a; }
+  .faq-q { padding: 18px 22px; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; user-select: none; }
+  .faq-q strong { font-size: 0.97rem; font-weight: 600; line-height: 1.4; }
+  .faq-toggle { width: 26px; height: 26px; background: var(--surface2); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; color: var(--accent); transition: transform 0.25s, background 0.2s; }
+  .faq-item.open .faq-toggle { transform: rotate(45deg); background: var(--accent); color: #000; }
+  .faq-a { display: none; padding: 0 22px 20px; color: #bbb; font-size: 0.93rem; border-top: 1px solid var(--border); padding-top: 16px; }
+  .faq-item.open .faq-a { display: block; }
+  .faq-a ul { list-style: none; margin-top: 8px; }
+  .faq-a ul li::before { content: "→ "; color: var(--accent); font-weight: 700; }
+  .faq-a ul li { margin-bottom: 5px; }
+  .highlight { color: var(--accent); font-weight: 600; }
+  .warn { color: #ff6b2b; font-weight: 600; }
+ 
+  .cta-strip { background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 40px; text-align: center; max-width: 780px; margin: 0 auto 80px; }
+  .cta-strip h3 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 1px; margin-bottom: 10px; }
+  .cta-strip p { color: var(--muted); margin-bottom: 22px; font-size: 0.95rem; }
+  .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .cta-btn { display: inline-block; background: var(--accent); color: #000; font-weight: 700; font-size: 0.92rem; letter-spacing: 1px; padding: 13px 28px; border-radius: 8px; text-decoration: none; text-transform: uppercase; transition: opacity 0.2s; }
+  .cta-btn:hover { opacity: 0.85; }
+  .cta-btn.ghost { background: transparent; border: 1px solid var(--border); color: var(--text); }
+  .cta-btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
+  .address { color: var(--muted); font-size: 0.83rem; margin-top: 18px; line-height: 1.7; }
+ 
+  @media (max-width: 600px) {
+    header, .hero, .cat-nav, .faq-wrap { padding-left: 18px; padding-right: 18px; }
+    .info-bar { padding: 0 18px; }
+    .cta-strip { margin: 0 18px 60px; padding: 28px 20px; }
+  }
+</style>
+</head>
+<body>
+ 
+<header>
+  <div class="logo">ONE <span>2</span> BUY</div>
+  <div class="header-info">
+    Sophienblatt 19 · 24103 Kiel &nbsp;|&nbsp; <a href="tel:04316004839">0431 6004839</a><br>
+    Mo–Fr 9–19 Uhr &nbsp;|&nbsp; Sa 9–18 Uhr &nbsp;|&nbsp; So geschlossen
+  </div>
+</header>
+ 
+<div class="hero">
+  <div class="hero-tag">FAQ – Häufige Fragen</div>
+  <h1>Du hast Fragen —<br><em>wir haben</em> Antworten.</h1>
+  <p>Alles was du wissen musst, bevor du dein Gerät, Gold oder Schmuck zu uns bringst. Kein Blödsinn, faire Preise, Barzahlung sofort.</p>
+</div>
+ 
+<div class="info-bar">
+  <div class="info-card">
+    <div class="label">Adresse</div>
+    <div class="value">Sophienblatt 19<br>24103 Kiel<br><span style="color:var(--muted);font-size:0.82rem;">Gegenüber Sophienhof</span></div>
+  </div>
+  <div class="info-card">
+    <div class="label">Telefon</div>
+    <div class="value"><a href="tel:04316004839">0431 6004839</a></div>
+  </div>
+  <div class="info-card">
+    <div class="label">Öffnungszeiten</div>
+    <div class="value">Mo–Fr: 9–19 Uhr<br>Sa: 9–18 Uhr<br>So: geschlossen</div>
+  </div>
+  <div class="info-card">
+    <div class="label">Ankauf bis</div>
+    <div class="value">Mo–Fr: 18:30 Uhr<br>Sa: 17:30 Uhr</div>
+  </div>
+  <div class="info-card">
+    <div class="label">Zahlung</div>
+    <div class="value">Bar · EC · PayPal<br>Überweisung</div>
+  </div>
+</div>
+ 
+<div class="cat-nav">
+  <button class="cat-btn active" onclick="jumpTo('allgemein', this)">Allgemein</button>
+  <button class="cat-btn" onclick="jumpTo('iphone', this)">iPhones & Smartphones</button>
+  <button class="cat-btn" onclick="jumpTo('gold', this)">Gold & Schmuck</button>
+  <button class="cat-btn" onclick="jumpTo('elektronik', this)">Laptops & Elektronik</button>
+  <button class="cat-btn" onclick="jumpTo('konsolen', this)">Spielekonsolen</button>
+  <button class="cat-btn" onclick="jumpTo('uhren', this)">Luxusuhren</button>
+  <button class="cat-btn" onclick="jumpTo('sonstiges', this)">Weiteres</button>
+  <button class="cat-btn" onclick="jumpTo('ablauf', this)">Ablauf & Zahlung</button>
+</div>
+ 
+<div class="faq-wrap">
+ 
+  <!-- ALLGEMEIN -->
+  <div class="faq-section" id="allgemein">
+    <div class="section-header">
+      <div class="section-icon">❓</div>
+      <h2>Allgemeine Fragen</h2>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Was ist ONE 2 BUY und was macht ihr genau?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        ONE 2 BUY ist ein Ankauf- und Verkaufsshop in Kiel am Sophienblatt 19, direkt gegenüber vom Sophienhof. Wir kaufen gebrauchte Elektronik, Smartphones, Laptops, Spielekonsolen, Gold, Schmuck und mehr — direkt vor Ort, zu fairen Preisen, <span class="highlight">bar auf die Hand</span>.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Muss ich einen Termin machen?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Nein, einfach vorbeikommen während der Öffnungszeiten. Bitte beachte: Der Ankauf endet <span class="highlight">Mo–Fr um 18:30 Uhr</span> und <span class="highlight">Sa um 17:30 Uhr</span> — also etwas früher als wir schließen. Bei größeren Mengen gerne vorher kurz anrufen: <a href="tel:04316004839" style="color:var(--accent);">0431 6004839</a>.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Was brauche ich beim Verkauf?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Du brauchst zwingend einen <span class="highlight">gültigen Personalausweis oder Reisepass</span>. Das ist gesetzlich vorgeschrieben. Außerdem muss die Ware dir gehören und frei von Rechten Dritter sein. Bei jedem Ankauf erstellen wir einen Ankaufbeleg.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr auch defekte oder kaputte Geräte?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Kommt auf das Gerät an. Leichte Defekte (Kratzer, schwacher Akku) sind oft kein Problem. <span class="warn">Wichtig:</span> Die Ware muss grundsätzlich testbar sein — kann sie nicht getestet werden, findet normalerweise kein Ankauf statt. Wasserschäden bei Smartphones werden nicht angekauft.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Was kauft ihr grundsätzlich NICHT an?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Folgendes kaufen wir grundsätzlich nicht an:
+        <ul>
+          <li>Waffen und Munition</li>
+          <li>Fälschungen und Repliken</li>
+          <li>Gestohlene Artikel oder Hehlerware</li>
+          <li>Gefundene Smartphones</li>
+          <li>Geräte mit iCloud-, Google- oder Aktivierungssperre</li>
+          <li>Geräte mit unbekannten Passwörtern</li>
+        </ul>
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Gibt es einen Versandankauf?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        In Ausnahmefällen möglich — aber nur nach vorheriger Abstimmung. Ruf uns an: <a href="tel:04316004839" style="color:var(--accent);">0431 6004839</a>. In der Regel ist der direkte Besuch im Geschäft aber schneller und unkomplizierter.
+      </div>
+    </div>
+  </div>
+ 
+  <!-- IPHONE & SMARTPHONES -->
+  <div class="faq-section" id="iphone">
+    <div class="section-header">
+      <div class="section-icon">📱</div>
+      <h2>iPhones & Smartphones</h2>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Wo kann ich in Kiel mein iPhone verkaufen?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Direkt bei ONE 2 BUY, Sophienblatt 19 in Kiel. Wir kaufen iPhones aller Modelle an. <span class="highlight">Sofortbewertung, Barzahlung, fertig.</span> Kein Versand, kein Warten — du gehst mit Geld raus.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Welche Smartphones kauft ihr an?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Markengeräte sind grundsätzlich interessant. Leichte Gebrauchsspuren sind kein Problem. Wir kaufen u.a.:
+        <ul>
+          <li>Apple iPhone (alle gängigen Modelle)</li>
+          <li>Samsung Galaxy (S-Serie, A-Serie, Foldables)</li>
+          <li>Google Pixel und weitere Markengeräte</li>
+        </ul>
+        Wasserschäden werden nicht angekauft.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Muss das iPhone entsperrt und aus iCloud ausgeloggt sein?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        <span class="warn">Ja, zwingend.</span> Geräte mit aktiver iCloud-Sperre, Apple-ID-Sperre, Google-Sperre oder Aktivierungssperre kaufen wir nicht an. Bitte vor dem Besuch: iCloud abmelden, Gerät auf Werkseinstellungen zurücksetzen. Ohne das kein Ankauf.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Wie viel bekomme ich für mein iPhone?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Das hängt von Modell, Speicher, Zustand und Zubehör ab. <span class="highlight">Verbindliche Preise nennen wir nur nach Prüfung vor Ort</span> — alle vorherigen Angaben sind unverbindlich. Die Bewertung ist kostenlos, du musst nicht verkaufen wenn dir der Preis nicht passt.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Brauche ich das Ladegerät oder die Originalbox?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Nein, Ladegerät und Box sind keine Pflicht. Zubehör und Originalverpackung erhöhen aber den Ankaufpreis — also am besten mitbringen wenn vorhanden.
+      </div>
+    </div>
+  </div>
+ 
+  <!-- GOLD & SCHMUCK -->
+  <div class="faq-section" id="gold">
+    <div class="section-header">
+      <div class="section-icon">💛</div>
+      <h2>Gold & Schmuck</h2>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Goldankauf Kiel — kauft ihr Gold und Schmuck?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Ja. Wir kaufen <span class="highlight">Gold, Silber, Schmuck und Edelmetalle</span> an — Ketten, Ringe, Armbänder, Münzen, Zahngold. Abrechnung nach aktuellem Tagespreis, transparent und fair.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Wie wird der Goldpreis berechnet?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Wir wiegen das Gold, bestimmen den Feingehalt und rechnen nach dem aktuellen <span class="highlight">Tagespreis für Gold</span> ab. Die Berechnung zeigen wir dir — kein Überraschungspoker. Du brauchst nur deinen Ausweis, keinen Kaufbeleg.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Werden Diamanten und Edelsteine extra bewertet?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Nein — Diamanten und Schmucksteine werden normalerweise <span class="highlight">nicht gesondert bewertet</span>. Der Ankauf erfolgt nach dem Materialwert des Metalls.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr auch kaputten Schmuck oder Einzelteile?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Ja. Kaputte Ketten, einzelne Ohrringe, verbogene Ringe — beim Goldankauf zählt der Metallwert, nicht das Aussehen.
+      </div>
+    </div>
+  </div>
+ 
+  <!-- LAPTOPS & ELEKTRONIK -->
+  <div class="faq-section" id="elektronik">
+    <div class="section-header">
+      <div class="section-icon">💻</div>
+      <h2>Laptops, Tablets & Elektronik</h2>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr MacBooks und Windows-Laptops an?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Ja. Wir kaufen MacBooks und Windows-Laptops an. Geräte sollten <span class="highlight">nicht älter als ca. 6 Jahre</span> sein. Bitte vorher: iCloud/Microsoft-Account abmelden, auf Werkseinstellungen zurücksetzen.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr Gaming-PCs an?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Ja. Gaming-PCs werden nach aktuellem Marktwert bewertet. <span class="highlight">Emotionale Preisvorstellungen spielen keine Rolle</span> — was zählt ist der aktuelle Wiederverkaufswert der Komponenten.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr Tablets, Smartwatches und Kopfhörer?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Ja, bei Markenprodukten:
+        <ul>
+          <li>Tablets (iPad, Samsung Galaxy Tab etc.)</li>
+          <li>Smartwatches (Apple Watch, Samsung etc.)</li>
+          <li>Kopfhörer (AirPods, Sony, Bose etc.)</li>
+        </ul>
+        Billige No-Name-Geräte werden normalerweise nicht angekauft.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr Fernseher an?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Nur moderne <span class="highlight">Smart-TVs</span>, bei denen Streamingdienste wie YouTube, Netflix und Amazon Prime nutzbar sind. Ältere oder einfache Geräte werden nicht angekauft.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr Kameras und Drohnen?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        <strong>Kameras:</strong> Spiegelreflexkameras und hochwertige Systemkameras sind interessant. Kein Schimmel, keine starken Feuchtigkeitsschäden.<br><br>
+        <strong>Drohnen:</strong> Bevorzugt DJI und andere Qualitätsmarken. Muss flugfähig sein.
+      </div>
+    </div>
+  </div>
+ 
+  <!-- SPIELEKONSOLEN -->
+  <div class="faq-section" id="konsolen">
+    <div class="section-header">
+      <div class="section-icon">🎮</div>
+      <h2>Spielekonsolen & Spiele</h2>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr PlayStation, Xbox und Nintendo an?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Ja, aber nur <span class="highlight">funktionsfähige Konsolen</span>. Defekte Konsolen werden nicht angekauft. Wir kaufen u.a.:
+        <ul>
+          <li>PlayStation 4 & 5</li>
+          <li>Xbox One, Series S & X</li>
+          <li>Nintendo Switch (alle Varianten)</li>
+          <li>Retro-Konsolen und Raritäten — nach Absprache</li>
+        </ul>
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr auch Spiele und Controller?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        <strong>Konsolenspiele:</strong> Ja, kaufen wir an. Bitte vollständig in Hülle.<br>
+        <strong>PC-Spiele:</strong> Normalerweise nicht.<br>
+        <strong>Controller:</strong> Ja, gerne mit Ladekabel — erhöht den Gesamtpreis.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Was muss ich vor dem Verkauf der Konsole tun?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Konten abmelden (PSN, Xbox Live, Nintendo Account) und die Konsole auf <span class="highlight">Werkseinstellungen zurücksetzen</span>. So sind deine Daten geschützt und wir können die Konsole direkt weiterverkaufen — was auch deinen Ankaufpreis erhöht.
+      </div>
+    </div>
+  </div>
+ 
+  <!-- LUXUSUHREN -->
+  <div class="faq-section" id="uhren">
+    <div class="section-header">
+      <div class="section-icon">⌚</div>
+      <h2>Luxusuhren</h2>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr Luxusuhren wie Rolex an?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Ja, hochwertige Luxusuhren sind grundsätzlich interessant für uns. Wichtig: <span class="highlight">Nur mit nachvollziehbarer Herkunft</span>. Die Uhr wird vor Ort geprüft. Fälschungen werden grundsätzlich nicht angekauft.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Brauche ich Papiere oder Box für meine Luxusuhr?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Originalpapiere und Box sind kein Muss, erhöhen aber deutlich den Ankaufpreis. Wichtiger ist die <span class="highlight">nachvollziehbare Herkunft</span> — du brauchst deinen Ausweis und solltest erklären können, woher die Uhr stammt.
+      </div>
+    </div>
+  </div>
+ 
+  <!-- SONSTIGES -->
+  <div class="faq-section" id="sonstiges">
+    <div class="section-header">
+      <div class="section-icon">🔧</div>
+      <h2>Werkzeug, Haushaltsgeräte & mehr</h2>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr Werkzeug an?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Ja, aber <span class="highlight">nur hochwertige Markenwerkzeuge</span>. Günstige Baumarktgeräte werden normalerweise nicht angekauft. Akkuwerkzeug muss testbar sein.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr Haushaltsgeräte an?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Nur hochwertige Geräte bekannter Marken. Interessant sind z.B.:
+        <ul>
+          <li>Thermomix / Vorwerk</li>
+          <li>Dyson (Staubsauger, Haartrockner etc.)</li>
+          <li>KitchenAid</li>
+          <li>Vergleichbare Premiummarken</li>
+        </ul>
+        Standard-Haushaltsgeräte von Discountern werden nicht angekauft.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr E-Bikes an?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Ja, E-Bikes können grundsätzlich interessant sein. Ruf uns am besten vorher kurz an: <a href="tel:04316004839" style="color:var(--accent);">0431 6004839</a> — damit wir schauen können ob wir gerade Bedarf haben und was wir anbieten können.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kann ich euch Fotos schicken bevor ich vorbeikomme?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Ja, das ist möglich. Ruf einfach an oder schreib uns — wir können einen ersten Eindruck geben. <span class="highlight">Verbindliche Preise</span> können aber ausschließlich unsere Mitarbeiter nach Prüfung der Ware vor Ort nennen.
+      </div>
+    </div>
+  </div>
+ 
+  <!-- ABLAUF & ZAHLUNG -->
+  <div class="faq-section" id="ablauf">
+    <div class="section-header">
+      <div class="section-icon">⚡</div>
+      <h2>Ablauf & Zahlung</h2>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Wie läuft der Ankauf bei ONE 2 BUY ab?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Ganz einfach in 3 Schritten:
+        <ul>
+          <li><span class="highlight">1. Vorbeikommen</span> — Gerät/Gold mitbringen, Ausweis nicht vergessen</li>
+          <li><span class="highlight">2. Bewertung</span> — wir prüfen die Ware direkt vor Ort, kostenlos und unverbindlich</li>
+          <li><span class="highlight">3. Zahlung</span> — wenn der Preis passt, bekommst du sofort dein Geld</li>
+        </ul>
+        Kein Versand, kein Warten, keine Überraschungen.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Wie zahlt ihr aus?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Wir zahlen auf deine Wahl:
+        <ul>
+          <li><span class="highlight">Bargeld</span> — sofort, direkt</li>
+          <li>EC-Karte</li>
+          <li>PayPal</li>
+          <li>Überweisung</li>
+        </ul>
+        Bei den meisten Kunden: <span class="highlight">Bar auf die Hand</span> — das geht am schnellsten.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Muss ich verkaufen wenn mir der Preis nicht passt?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Nein. Die Bewertung ist <span class="highlight">völlig kostenlos und unverbindlich</span>. Wenn dir unser Angebot nicht passt, nimmst du dein Gerät einfach wieder mit. Kein Druck, keine Kosten.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kann ich Geräte reservieren?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Reservierungen sind nur <span class="highlight">gegen Anzahlung</span> möglich. Nicht abgeholte Ware kann nach Fristablauf wieder verkauft werden.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Gibt es Gewährleistung auf gekaufte Geräte?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Ja. Gebrauchtware unterliegt der <span class="highlight">gesetzlichen Gewährleistung</span>.
+      </div>
+    </div>
+ 
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">
+        <strong>Kauft ihr auch größere Mengen — z.B. Haushaltsauflösung?</strong>
+        <div class="faq-toggle">+</div>
+      </div>
+      <div class="faq-a">
+        Ja. Bei mehreren Geräten oder größeren Mengen ruf vorher kurz an: <a href="tel:04316004839" style="color:var(--accent);">0431 6004839</a>. Dann können wir alles in Ruhe bewerten und du bekommst einen Gesamtpreis.
+      </div>
+    </div>
+  </div>
+ 
+</div>
+ 
+<!-- CTA -->
+<div class="cta-strip">
+  <h3>Komm einfach vorbei.</h3>
+  <p>Sophienblatt 19, Kiel — gegenüber vom Sophienhof.<br>Kostenlose Bewertung, kein Termin nötig, Barzahlung sofort.</p>
+  <div class="cta-btns">
+    <a href="tel:04316004839" class="cta-btn">📞 0431 6004839</a>
+    <a href="https://maps.google.com/?q=Sophienblatt+19+24103+Kiel" target="_blank" class="cta-btn ghost">📍 Route planen</a>
+  </div>
+  <div class="address">
+    ONE 2 BUY Multimedia Ankauf und Verkauf Kiel<br>
+    Sophienblatt 19 · 24103 Kiel<br>
+    Mo–Fr 9–19 Uhr (Ankauf bis 18:30) · Sa 9–18 Uhr (Ankauf bis 17:30) · So geschlossen
+  </div>
+</div>
+ 
+<!-- JSON-LD FAQPage Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Wo kann ich in Kiel mein iPhone verkaufen?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Direkt bei ONE 2 BUY, Sophienblatt 19 in Kiel (gegenüber Sophienhof). Wir kaufen iPhones aller Modelle an und zahlen sofort bar. Kein Versand, keine Wartezeit." }
+    },
+    {
+      "@type": "Question",
+      "name": "Goldankauf Kiel – wer kauft Gold in Kiel an?",
+      "acceptedAnswer": { "@type": "Answer", "text": "ONE 2 BUY in Kiel kauft Gold, Silber, Schmuck und Edelmetalle an – nach aktuellem Tagespreis, transparent und mit sofortiger Barzahlung. Adresse: Sophienblatt 19, 24103 Kiel." }
+    },
+    {
+      "@type": "Question",
+      "name": "Wo kann ich in Kiel gebrauchte Elektronik verkaufen?",
+      "acceptedAnswer": { "@type": "Answer", "text": "ONE 2 BUY in Kiel kauft Smartphones, Laptops, Tablets, Spielekonsolen, Kameras und weitere Elektronik an. Kostenlose Bewertung vor Ort, Barzahlung sofort. Sophienblatt 19, 24103 Kiel, Tel. 0431 6004839." }
+    },
+    {
+      "@type": "Question",
+      "name": "Was sind die Öffnungszeiten von ONE 2 BUY Kiel?",
+      "acceptedAnswer": { "@type": "Answer", "text": "ONE 2 BUY Kiel ist Montag bis Freitag von 9 bis 19 Uhr geöffnet (Ankauf bis 18:30 Uhr) und Samstag von 9 bis 18 Uhr (Ankauf bis 17:30 Uhr). Sonntag geschlossen." }
+    },
+    {
+      "@type": "Question",
+      "name": "Wie viel bekomme ich für mein altes Smartphone?",
+      "acceptedAnswer": { "@type": "Answer", "text": "Der Preis hängt von Modell, Zustand und Zubehör ab. Eine kostenlose, unverbindliche Bewertung gibt es direkt bei ONE 2 BUY in Kiel, Sophienblatt 19." }
+    }
+  ]
+}
+</script>
+ 
+<!-- LocalBusiness Schema -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Store",
+  "name": "ONE 2 BUY Multimedia Ankauf und Verkauf Kiel",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Sophienblatt 19",
+    "addressLocality": "Kiel",
+    "postalCode": "24103",
+    "addressCountry": "DE"
+  },
+  "telephone": "+494316004839",
+  "openingHours": ["Mo-Fr 09:00-19:00", "Sa 09:00-18:00"],
+  "description": "Ankauf und Verkauf von Smartphones, iPhones, Gold, Laptops, Spielekonsolen und Elektronik in Kiel."
+}
+</script>
+ 
+<script>
+  function toggle(el) {
+    el.parentElement.classList.toggle('open');
+  }
+  function jumpTo(id, btn) {
+    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
+    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+  }
+</script>
+ 
+</body>
+</html>
