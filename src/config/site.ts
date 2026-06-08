@@ -46,6 +46,4 @@ export const SITE = {
     { label: 'Kontakt', href: '/kontakt' },
     { label: 'FAQ', href: '/faq' },
   ],
-  ],
-  ],
 };
