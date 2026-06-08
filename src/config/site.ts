@@ -42,7 +42,7 @@ export const SITE = {
     { label: 'Verkauf', href: '/verkauf' },
     { label: 'Goldankauf', href: '/goldankauf' },
     { label: 'Standort', href: '/standorte' },
-    
-    { label: 'FAQ', href: '/faq' },
+    { label: 'Über uns', href: '/ueber-uns' },
+    { label: 'Kontakt', href: '/kontakt' },
   ],
 };
