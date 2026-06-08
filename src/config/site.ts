@@ -47,4 +47,5 @@ export const SITE = {
     { label: 'FAQ', href: '/faq' },
   ],
   ],
+  ],
 };
