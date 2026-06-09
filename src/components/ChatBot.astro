@@ -210,7 +210,7 @@
     display: none;
     flex: 1;
     overflow-y: auto;
-    padding: 14px 12px;
+    padding: 16px 12px;
     min-height: 220px;
     max-height: 360px;
     scroll-behavior: smooth;
@@ -218,7 +218,7 @@
 
   .o2b-msg {
     display: flex;
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     animation: o2b-in 0.2s ease;
   }
 
@@ -230,26 +230,69 @@
   .o2b-msg.user  { justify-content: flex-end; }
   .o2b-msg.bot   { justify-content: flex-start; }
 
+  /* Shared bubble base */
   .o2b-bubble {
-    max-width: 82%;
-    padding: 9px 13px;
+    max-width: 84%;
     border-radius: 14px;
     font-size: 13.5px;
-    white-space: pre-wrap;
     word-break: break-word;
-    line-height: 1.5;
+    line-height: 1.6;
   }
 
+  /* User bubble */
   .o2b-msg.user .o2b-bubble {
     background: #003087;
     color: #fff;
     border-bottom-right-radius: 4px;
+    padding: 10px 14px;
+    white-space: pre-wrap;
   }
 
+  /* Bot bubble */
   .o2b-msg.bot .o2b-bubble {
     background: #f3f4f6;
     color: #1f2937;
     border-bottom-left-radius: 4px;
+    padding: 12px 16px;
+  }
+
+  /* Bot bubble inner typography */
+  .o2b-msg.bot .o2b-bubble p {
+    margin: 0 0 10px;
+    line-height: 1.6;
+  }
+
+  .o2b-msg.bot .o2b-bubble p:last-child {
+    margin-bottom: 0;
+  }
+
+  .o2b-msg.bot .o2b-bubble ul,
+  .o2b-msg.bot .o2b-bubble ol {
+    margin: 6px 0 10px;
+    padding-left: 20px;
+  }
+
+  .o2b-msg.bot .o2b-bubble ul:last-child,
+  .o2b-msg.bot .o2b-bubble ol:last-child {
+    margin-bottom: 0;
+  }
+
+  .o2b-msg.bot .o2b-bubble li {
+    margin-bottom: 5px;
+    line-height: 1.55;
+  }
+
+  .o2b-msg.bot .o2b-bubble li:last-child {
+    margin-bottom: 0;
+  }
+
+  .o2b-msg.bot .o2b-bubble strong {
+    font-weight: 700;
+    color: #111827;
+  }
+
+  .o2b-msg.bot .o2b-bubble em {
+    font-style: italic;
   }
 
   /* Typing indicator */
@@ -338,21 +381,87 @@
 </style>
 
 <script>
-  const toggle  = document.getElementById('o2b-toggle')!;
-  const win     = document.getElementById('o2b-win')!;
-  const closeBtn= document.getElementById('o2b-close')!;
-  const consent = document.getElementById('o2b-consent')!;
+  const toggle   = document.getElementById('o2b-toggle')!;
+  const win      = document.getElementById('o2b-win')!;
+  const closeBtn = document.getElementById('o2b-close')!;
+  const consent  = document.getElementById('o2b-consent')!;
   const acceptBtn= document.getElementById('o2b-accept')!;
-  const msgs    = document.getElementById('o2b-msgs')!;
-  const foot    = document.getElementById('o2b-foot')!;
-  const inp     = document.getElementById('o2b-inp') as HTMLInputElement;
-  const sendBtn = document.getElementById('o2b-send') as HTMLButtonElement;
+  const msgs     = document.getElementById('o2b-msgs')!;
+  const foot     = document.getElementById('o2b-foot')!;
+  const inp      = document.getElementById('o2b-inp') as HTMLInputElement;
+  const sendBtn  = document.getElementById('o2b-send') as HTMLButtonElement;
 
   const WELCOME = 'Hallo! Ich bin der ONE 2 BUY Assistent. Wie kann ich Ihnen helfen? Ich beantworte gerne Fragen zum Ankauf, zu unseren Öffnungszeiten und zu unserem Standort in Kiel.';
 
   let isOpen = false;
   let history: { role: string; content: string }[] = [];
   let consented = sessionStorage.getItem('o2b-consent') === '1';
+
+  // Converts simple markdown from the bot to safe HTML.
+  // All text content is HTML-escaped before inserting formatting tags.
+  function markdownToHtml(text: string): string {
+    const esc = (s: string) =>
+      s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+
+    const lines = text.trim().split('\n');
+    const parts: string[] = [];
+    let paragraphLines: string[] = [];
+    let listType: 'ul' | 'ol' | null = null;
+    let listItems: string[] = [];
+
+    const flushParagraph = () => {
+      if (!paragraphLines.length) return;
+      parts.push(`<p>${esc(paragraphLines.join(' '))}</p>`);
+      paragraphLines = [];
+    };
+
+    const flushList = () => {
+      if (!listType || !listItems.length) return;
+      const items = listItems.map(i => `<li>${esc(i)}</li>`).join('');
+      parts.push(`<${listType}>${items}</${listType}>`);
+      listType = null;
+      listItems = [];
+    };
+
+    for (const line of lines) {
+      const trimmed = line.trim();
+
+      if (!trimmed) {
+        flushParagraph();
+        flushList();
+        continue;
+      }
+
+      const ulMatch = trimmed.match(/^[-*•]\s+(.*)/);
+      if (ulMatch) {
+        flushParagraph();
+        if (listType !== 'ul') { flushList(); listType = 'ul'; }
+        listItems.push(ulMatch[1]);
+        continue;
+      }
+
+      const olMatch = trimmed.match(/^(\d+)\.\s+(.*)/);
+      if (olMatch) {
+        flushParagraph();
+        if (listType !== 'ol') { flushList(); listType = 'ol'; }
+        listItems.push(olMatch[2]);
+        continue;
+      }
+
+      flushList();
+      paragraphLines.push(trimmed);
+    }
+
+    flushParagraph();
+    flushList();
+
+    let html = parts.join('');
+    // Inline formatting (applied after escaping, so only our tags are injected)
+    html = html.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    html = html.replace(/\*(.+?)\*/g, '<em>$1</em>');
+
+    return html;
+  }
 
   function openChat() {
     isOpen = true;
@@ -386,11 +495,15 @@
   });
 
   function appendMsg(role: 'user' | 'bot', text: string) {
-    const row    = document.createElement('div');
+    const row = document.createElement('div');
     row.className = `o2b-msg ${role}`;
     const bubble = document.createElement('div');
     bubble.className = 'o2b-bubble';
-    bubble.textContent = text;
+    if (role === 'bot') {
+      bubble.innerHTML = markdownToHtml(text);
+    } else {
+      bubble.textContent = text;
+    }
     row.appendChild(bubble);
     msgs.appendChild(row);
     msgs.scrollTop = msgs.scrollHeight;
