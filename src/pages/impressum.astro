@@ -11,10 +11,10 @@ import { SITE } from '../config/site';
     <div class="max-w-3xl mx-auto px-4">
       <h1 class="text-3xl font-black text-brand-blue mb-8">Impressum</h1>
 
-      <div class="prose prose-gray max-w-none space-y-8">
+      <div class="space-y-8">
         <div>
           <h2 class="text-xl font-bold text-gray-800 mb-3">Angaben gemäß § 5 TMG</h2>
-          <p class="text-gray-700">
+          <p class="text-gray-700 leading-relaxed">
             {SITE.impressum.name}<br />
             {SITE.impressum.address}<br />
             {SITE.impressum.zip} {SITE.impressum.city}<br />
@@ -24,7 +24,7 @@ import { SITE } from '../config/site';
 
         <div>
           <h2 class="text-xl font-bold text-gray-800 mb-3">Kontakt</h2>
-          <p class="text-gray-700">
+          <p class="text-gray-700 leading-relaxed">
             Telefon: <a href={SITE.impressum.phoneHref} class="text-brand-blue hover:underline">{SITE.impressum.phone}</a><br />
             E-Mail: <a href={SITE.impressum.emailHref} class="text-brand-blue hover:underline">{SITE.impressum.email}</a>
           </p>
@@ -32,7 +32,7 @@ import { SITE } from '../config/site';
 
         <div>
           <h2 class="text-xl font-bold text-gray-800 mb-3">Umsatzsteuer-ID</h2>
-          <p class="text-gray-700">
+          <p class="text-gray-700 leading-relaxed">
             Umsatzsteuer-Identifikationsnummer gemäß § 27a Umsatzsteuergesetz:<br />
             {SITE.impressum.ustId}
           </p>
@@ -40,7 +40,7 @@ import { SITE } from '../config/site';
 
         <div>
           <h2 class="text-xl font-bold text-gray-800 mb-3">Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV</h2>
-          <p class="text-gray-700">
+          <p class="text-gray-700 leading-relaxed">
             {SITE.impressum.name}<br />
             {SITE.impressum.address}<br />
             {SITE.impressum.zip} {SITE.impressum.city}
