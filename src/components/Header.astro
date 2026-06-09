@@ -4,7 +4,7 @@ const currentPath = Astro.url.pathname;
 ---
 
 <header class="bg-brand-blue text-white shadow-lg sticky top-0 z-50">
-  <!-- Top info bar -->
+  <!-- Top info bar (desktop only) -->
   <div class="bg-brand-blue-dark text-sm hidden md:block">
     <div class="max-w-7xl mx-auto px-4 py-1.5 flex justify-between items-center">
       <span>Kiels größter An- &amp; Verkauf seit 1999</span>
@@ -20,9 +20,10 @@ const currentPath = Astro.url.pathname;
     </div>
   </div>
 
-  <!-- Main nav -->
+  <!-- Main nav bar -->
   <div class="max-w-7xl mx-auto px-4">
     <div class="flex items-center justify-between h-16 md:h-20">
+
       <!-- Logo -->
       <a href="/" class="flex items-center gap-3 hover:opacity-90 transition-opacity" aria-label="ONE 2 BUY Kiel – Startseite">
         <img
@@ -35,7 +36,7 @@ const currentPath = Astro.url.pathname;
         </span>
       </a>
 
-      <!-- Desktop nav -->
+      <!-- Desktop nav (lg and above) -->
       <nav class="hidden lg:flex items-center gap-1">
         {SITE.nav.map((item) => (
           <a
@@ -48,61 +49,112 @@ const currentPath = Astro.url.pathname;
           </a>
         ))}
         <a
-         
+          href={SITE.ebay.storeUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="ml-2 px-4 py-2 bg-brand-red hover:bg-brand-red-dark rounded-md text-sm font-bold transition-colors"
+        >
+          eBay Shop
+        </a>
       </nav>
 
-      <!-- Mobile hamburger -->
+      <!-- Hamburger button (below lg) -->
       <button
         id="menu-btn"
         aria-label="Menü öffnen"
         aria-expanded="false"
-        class="lg:hidden p-2 rounded-md hover:bg-brand-blue-light transition-colors"
+        aria-controls="mobile-menu"
+        class="lg:hidden flex flex-col justify-center gap-1.5 w-10 h-10 p-2 rounded-md hover:bg-brand-blue-light transition-colors"
       >
-        <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all" id="bar1"></span>
-        <span class="block w-6 h-0.5 bg-white mb-1.5 transition-all" id="bar2"></span>
-        <span class="block w-6 h-0.5 bg-white transition-all" id="bar3"></span>
+        <span id="bar1" class="block w-full h-0.5 bg-white rounded-full transition-all duration-300 origin-center"></span>
+        <span id="bar2" class="block w-full h-0.5 bg-white rounded-full transition-all duration-300"></span>
+        <span id="bar3" class="block w-full h-0.5 bg-white rounded-full transition-all duration-300 origin-center"></span>
       </button>
     </div>
 
-    <!-- Mobile menu -->
-    <nav id="mobile-menu" class="lg:hidden hidden pb-4">
-      <div class="flex flex-col gap-1">
+    <!-- Mobile dropdown menu (below lg) -->
+    <nav
+      id="mobile-menu"
+      aria-hidden="true"
+      style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease;"
+      class="lg:hidden"
+    >
+      <div class="flex flex-col gap-1 pb-4 pt-1 border-t border-brand-blue-light">
         {SITE.nav.map((item) => (
           <a
             href={item.href}
-            class={`px-3 py-2 rounded-md text-sm font-medium transition-colors hover:bg-brand-blue-light ${
+            class={`px-3 py-2.5 rounded-md text-sm font-medium transition-colors hover:bg-brand-blue-light ${
               currentPath === item.href ? 'bg-brand-blue-light' : ''
             }`}
           >
             {item.label}
           </a>
         ))}
-        <a
-          href={SITE.shop.phoneHref}
-          class="px-3 py-2 text-sm font-medium text-yellow-300"
-        >
-          📞 {SITE.shop.phone}
-        </a>
-        <a
-          href={SITE.ebay.storeUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          class="mt-2 px-4 py-2 bg-brand-red hover:bg-brand-red-dark rounded-md text-sm font-bold text-center transition-colors"
-        >
-          eBay Shop
-        </a>
+        <div class="mt-2 pt-2 border-t border-brand-blue-light flex flex-col gap-2">
+          <a
+            href={SITE.shop.phoneHref}
+            class="px-3 py-2.5 rounded-md text-sm font-semibold text-yellow-300 hover:bg-brand-blue-light transition-colors"
+          >
+            📞 {SITE.shop.phone}
+          </a>
+          <a
+            href={SITE.ebay.storeUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="px-4 py-2.5 bg-brand-red hover:bg-brand-red-dark rounded-md text-sm font-bold text-center transition-colors"
+          >
+            eBay Shop →
+          </a>
+        </div>
       </div>
     </nav>
   </div>
 </header>
 
 <script>
-  const btn = document.getElementById('menu-btn');
-  const menu = document.getElementById('mobile-menu');
+  const btn   = document.getElementById('menu-btn') as HTMLButtonElement;
+  const menu  = document.getElementById('mobile-menu') as HTMLElement;
+  const bar1  = document.getElementById('bar1') as HTMLElement;
+  const bar2  = document.getElementById('bar2') as HTMLElement;
+  const bar3  = document.getElementById('bar3') as HTMLElement;
 
-  btn?.addEventListener('click', () => {
-    const isOpen = !menu?.classList.contains('hidden');
-    menu?.classList.toggle('hidden');
-    btn.setAttribute('aria-expanded', String(!isOpen));
+  if (!btn || !menu) throw new Error('Header: menu elements not found');
+
+  let isOpen = false;
+
+  function openMenu() {
+    isOpen = true;
+    menu.style.maxHeight = menu.scrollHeight + 'px';
+    menu.setAttribute('aria-hidden', 'false');
+    btn.setAttribute('aria-expanded', 'true');
+    btn.setAttribute('aria-label', 'Menü schließen');
+    bar1.style.transform = 'translateY(8px) rotate(45deg)';
+    bar2.style.opacity = '0';
+    bar3.style.transform = 'translateY(-8px) rotate(-45deg)';
+  }
+
+  function closeMenu() {
+    isOpen = false;
+    menu.style.maxHeight = '0';
+    menu.setAttribute('aria-hidden', 'true');
+    btn.setAttribute('aria-expanded', 'false');
+    btn.setAttribute('aria-label', 'Menü öffnen');
+    bar1.style.transform = '';
+    bar2.style.opacity = '';
+    bar3.style.transform = '';
+  }
+
+  btn.addEventListener('click', () => (isOpen ? closeMenu() : openMenu()));
+
+  // Close when any mobile nav link is clicked
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', closeMenu);
+  });
+
+  // Close when clicking outside the header
+  document.addEventListener('click', (e) => {
+    if (isOpen && !btn.closest('header')?.contains(e.target as Node)) {
+      closeMenu();
+    }
   });
 </script>
