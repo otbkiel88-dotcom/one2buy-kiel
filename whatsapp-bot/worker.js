@@ -75,6 +75,10 @@ export default {
   },
 };
 
+// Verify Token – muss exakt mit dem Wert in der Meta Developer Console übereinstimmen.
+// Das Secret WHATSAPP_VERIFY_TOKEN überschreibt diesen Wert wenn gesetzt.
+const VERIFY_TOKEN_FALLBACK = 'one2buy-kiel-wa';
+
 // ─── Webhook-Verifizierung (GET) ──────────────────────────────────────────────
 
 function handleVerification(request, env) {
@@ -83,12 +87,16 @@ function handleVerification(request, env) {
   const token     = url.searchParams.get('hub.verify_token');
   const challenge = url.searchParams.get('hub.challenge');
 
-  if (mode === 'subscribe' && token === env.WHATSAPP_VERIFY_TOKEN) {
+  const expectedToken = (env.WHATSAPP_VERIFY_TOKEN || '').trim() || VERIFY_TOKEN_FALLBACK;
+
+  console.log(`Verification: mode="${mode}" token="${token}" expected="${expectedToken}" challenge="${challenge}"`);
+
+  if (mode === 'subscribe' && token === expectedToken) {
     console.log('Webhook verification successful');
-    return new Response(challenge, { status: 200 });
+    return new Response(challenge, { status: 200, headers: { 'Content-Type': 'text/plain' } });
   }
 
-  console.error('Webhook verification failed – wrong verify token');
+  console.error(`Verification failed: received token="${token}", expected="${expectedToken}"`);
   return new Response('Forbidden', { status: 403 });
 }
 
