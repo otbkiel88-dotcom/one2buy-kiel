@@ -1,6 +1,6 @@
 // ONE 2 BUY Kiel – WhatsApp Bot Worker
-// Phone Number ID : 1169277379602396
-// Business Account: 1628608621579085
+// Phone Number ID : 1071037936103595
+// Business Account: 760021927177401
 //
 // Webhook-URL (nach Deploy eintragen in Meta Developer Console):
 //   https://one2buy-whatsapp.<dein-subdomain>.workers.dev/webhook
@@ -10,7 +10,7 @@
 //   npx wrangler secret put WHATSAPP_ACCESS_TOKEN -c whatsapp-bot/wrangler.toml
 //   npx wrangler secret put WHATSAPP_VERIFY_TOKEN -c whatsapp-bot/wrangler.toml  (beliebiger String, z.B. "one2buy-kiel-wa")
 
-const PHONE_NUMBER_ID = '1169277379602396';
+const PHONE_NUMBER_ID = '1071037936103595';
 const WA_API = `https://graph.facebook.com/v19.0/${PHONE_NUMBER_ID}`;
 
 // Maximale Gesprächstiefe (Anzahl User+Assistent-Nachrichten, die im Kontext bleiben)
