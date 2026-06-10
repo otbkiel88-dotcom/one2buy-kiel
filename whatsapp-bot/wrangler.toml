@@ -1,0 +1,16 @@
+name = "one2buy-whatsapp"
+compatibility_date = "2025-01-01"
+main = "worker.js"
+
+# KV namespace for conversation history (24h per user) and deduplication
+# Erstelle den Namespace einmalig mit:
+#   npx wrangler kv namespace create "CHAT_HISTORY" -c whatsapp-bot/wrangler.toml
+# Dann die ausgegebene ID unten eintragen.
+[[kv_namespaces]]
+binding = "CHAT_HISTORY"
+id = "REPLACE_WITH_KV_NAMESPACE_ID"
+
+# Secrets – setzen mit:
+#   npx wrangler secret put OPENAI_API_KEY        -c whatsapp-bot/wrangler.toml
+#   npx wrangler secret put WHATSAPP_ACCESS_TOKEN -c whatsapp-bot/wrangler.toml
+#   npx wrangler secret put WHATSAPP_VERIFY_TOKEN -c whatsapp-bot/wrangler.toml
