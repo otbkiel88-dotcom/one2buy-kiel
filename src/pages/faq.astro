@@ -54,8 +54,10 @@
   .faq-q strong { font-size: 0.97rem; font-weight: 600; line-height: 1.4; }
   .faq-toggle { width: 26px; height: 26px; background: var(--surface2); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; color: var(--accent); transition: transform 0.25s, background 0.2s; }
   .faq-item.open .faq-toggle { transform: rotate(45deg); background: var(--accent); color: #000; }
-  .faq-a { max-height: 0; overflow: hidden; padding: 0 22px; color: #bbb; font-size: 0.93rem; border-top: 0px solid var(--border); transition: max-height 0.35s ease, padding 0.35s ease; }
-  .faq-item.open .faq-a { padding: 16px 22px 20px; border-top: 1px solid var(--border); }
+  .faq-a { display: grid; grid-template-rows: 0fr; transition: grid-template-rows 0.35s ease; }
+  .faq-item.open .faq-a { grid-template-rows: 1fr; }
+  .faq-a-inner { overflow: hidden; padding: 0 22px; color: #bbb; font-size: 0.93rem; }
+  .faq-item.open .faq-a-inner { padding: 16px 22px 20px; border-top: 1px solid var(--border); }
   .faq-a ul { list-style: none; margin-top: 8px; }
   .faq-a ul li::before { content: "→ "; color: var(--accent); font-weight: 700; }
   .faq-a ul li { margin-bottom: 5px; }
@@ -143,9 +145,9 @@
         <strong>Was ist ONE 2 BUY und was macht ihr genau?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         ONE 2 BUY ist ein Ankauf- und Verkaufsshop in Kiel am Sophienblatt 19, direkt gegenüber vom Sophienhof. Wir kaufen gebrauchte Elektronik, Smartphones, Laptops, Spielekonsolen, Gold, Schmuck und mehr — direkt vor Ort, zu fairen Preisen, <span class="highlight">bar auf die Hand</span>.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -153,9 +155,9 @@
         <strong>Muss ich einen Termin machen?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Nein, einfach vorbeikommen während der Öffnungszeiten. Bitte beachte: Der Ankauf endet <span class="highlight">Mo–Fr um 18:30 Uhr</span> und <span class="highlight">Sa um 17:30 Uhr</span> — also etwas früher als wir schließen. Bei größeren Mengen gerne vorher kurz anrufen: <a href="tel:04316004839" style="color:var(--accent);">0431 6004839</a>.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -163,9 +165,9 @@
         <strong>Was brauche ich beim Verkauf?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Du brauchst zwingend einen <span class="highlight">gültigen Personalausweis oder Reisepass</span>. Das ist gesetzlich vorgeschrieben. Außerdem muss die Ware dir gehören und frei von Rechten Dritter sein. Bei jedem Ankauf erstellen wir einen Ankaufbeleg.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -173,9 +175,9 @@
         <strong>Kauft ihr auch defekte oder kaputte Geräte?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Kommt auf das Gerät an. Leichte Defekte (Kratzer, schwacher Akku) sind oft kein Problem. <span class="warn">Wichtig:</span> Die Ware muss grundsätzlich testbar sein — kann sie nicht getestet werden, findet normalerweise kein Ankauf statt. Wasserschäden bei Smartphones werden nicht angekauft.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -183,7 +185,7 @@
         <strong>Was kauft ihr grundsätzlich NICHT an?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Folgendes kaufen wir grundsätzlich nicht an:
         <ul>
           <li>Waffen und Munition</li>
@@ -193,7 +195,7 @@
           <li>Geräte mit iCloud-, Google- oder Aktivierungssperre</li>
           <li>Geräte mit unbekannten Passwörtern</li>
         </ul>
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -201,9 +203,9 @@
         <strong>Gibt es einen Versandankauf?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         In Ausnahmefällen möglich — aber nur nach vorheriger Abstimmung. Ruf uns an: <a href="tel:04316004839" style="color:var(--accent);">0431 6004839</a>. In der Regel ist der direkte Besuch im Geschäft aber schneller und unkomplizierter.
-      </div>
+      </div></div>
     </div>
   </div>
  
@@ -219,9 +221,9 @@
         <strong>Wo kann ich in Kiel mein iPhone verkaufen?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Direkt bei ONE 2 BUY, Sophienblatt 19 in Kiel. Wir kaufen iPhones aller Modelle an. <span class="highlight">Sofortbewertung, Barzahlung, fertig.</span> Kein Versand, kein Warten — du gehst mit Geld raus.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -229,7 +231,7 @@
         <strong>Welche Smartphones kauft ihr an?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Markengeräte sind grundsätzlich interessant. Leichte Gebrauchsspuren sind kein Problem. Wir kaufen u.a.:
         <ul>
           <li>Apple iPhone (alle gängigen Modelle)</li>
@@ -237,7 +239,7 @@
           <li>Google Pixel und weitere Markengeräte</li>
         </ul>
         Wasserschäden werden nicht angekauft.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -245,9 +247,9 @@
         <strong>Muss das iPhone entsperrt und aus iCloud ausgeloggt sein?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         <span class="warn">Ja, zwingend.</span> Geräte mit aktiver iCloud-Sperre, Apple-ID-Sperre, Google-Sperre oder Aktivierungssperre kaufen wir nicht an. Bitte vor dem Besuch: iCloud abmelden, Gerät auf Werkseinstellungen zurücksetzen. Ohne das kein Ankauf.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -255,9 +257,9 @@
         <strong>Wie viel bekomme ich für mein iPhone?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Das hängt von Modell, Speicher, Zustand und Zubehör ab. <span class="highlight">Verbindliche Preise nennen wir nur nach Prüfung vor Ort</span> — alle vorherigen Angaben sind unverbindlich. Die Bewertung ist kostenlos, du musst nicht verkaufen wenn dir der Preis nicht passt.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -265,9 +267,9 @@
         <strong>Brauche ich das Ladegerät oder die Originalbox?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Nein, Ladegerät und Box sind keine Pflicht. Zubehör und Originalverpackung erhöhen aber den Ankaufpreis — also am besten mitbringen wenn vorhanden.
-      </div>
+      </div></div>
     </div>
   </div>
  
@@ -283,9 +285,9 @@
         <strong>Goldankauf Kiel — kauft ihr Gold und Schmuck?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Ja. Wir kaufen <span class="highlight">Gold, Silber, Schmuck und Edelmetalle</span> an — Ketten, Ringe, Armbänder, Münzen, Zahngold. Abrechnung nach aktuellem Tagespreis, transparent und fair.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -293,9 +295,9 @@
         <strong>Wie wird der Goldpreis berechnet?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Wir wiegen das Gold, bestimmen den Feingehalt und rechnen nach dem aktuellen <span class="highlight">Tagespreis für Gold</span> ab. Die Berechnung zeigen wir dir — kein Überraschungspoker. Du brauchst nur deinen Ausweis, keinen Kaufbeleg.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -303,9 +305,9 @@
         <strong>Werden Diamanten und Edelsteine extra bewertet?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Nein — Diamanten und Schmucksteine werden normalerweise <span class="highlight">nicht gesondert bewertet</span>. Der Ankauf erfolgt nach dem Materialwert des Metalls.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -313,9 +315,9 @@
         <strong>Kauft ihr auch kaputten Schmuck oder Einzelteile?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Ja. Kaputte Ketten, einzelne Ohrringe, verbogene Ringe — beim Goldankauf zählt der Metallwert, nicht das Aussehen.
-      </div>
+      </div></div>
     </div>
   </div>
  
@@ -331,9 +333,9 @@
         <strong>Kauft ihr MacBooks und Windows-Laptops an?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Ja. Wir kaufen MacBooks und Windows-Laptops an. Geräte sollten <span class="highlight">nicht älter als ca. 6 Jahre</span> sein. Bitte vorher: iCloud/Microsoft-Account abmelden, auf Werkseinstellungen zurücksetzen.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -341,9 +343,9 @@
         <strong>Kauft ihr Gaming-PCs an?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Ja. Gaming-PCs werden nach aktuellem Marktwert bewertet. <span class="highlight">Emotionale Preisvorstellungen spielen keine Rolle</span> — was zählt ist der aktuelle Wiederverkaufswert der Komponenten.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -351,7 +353,7 @@
         <strong>Kauft ihr Tablets, Smartwatches und Kopfhörer?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Ja, bei Markenprodukten:
         <ul>
           <li>Tablets (iPad, Samsung Galaxy Tab etc.)</li>
@@ -359,7 +361,7 @@
           <li>Kopfhörer (AirPods, Sony, Bose etc.)</li>
         </ul>
         Billige No-Name-Geräte werden normalerweise nicht angekauft.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -367,9 +369,9 @@
         <strong>Kauft ihr Fernseher an?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Nur moderne <span class="highlight">Smart-TVs</span>, bei denen Streamingdienste wie YouTube, Netflix und Amazon Prime nutzbar sind. Ältere oder einfache Geräte werden nicht angekauft.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -377,10 +379,10 @@
         <strong>Kauft ihr Kameras und Drohnen?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         <strong>Kameras:</strong> Spiegelreflexkameras und hochwertige Systemkameras sind interessant. Kein Schimmel, keine starken Feuchtigkeitsschäden.<br><br>
         <strong>Drohnen:</strong> Bevorzugt DJI und andere Qualitätsmarken. Muss flugfähig sein.
-      </div>
+      </div></div>
     </div>
   </div>
  
@@ -396,7 +398,7 @@
         <strong>Kauft ihr PlayStation, Xbox und Nintendo an?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Ja, aber nur <span class="highlight">funktionsfähige Konsolen</span>. Defekte Konsolen werden nicht angekauft. Wir kaufen u.a.:
         <ul>
           <li>PlayStation 4 & 5</li>
@@ -404,7 +406,7 @@
           <li>Nintendo Switch (alle Varianten)</li>
           <li>Retro-Konsolen und Raritäten — nach Absprache</li>
         </ul>
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -412,11 +414,11 @@
         <strong>Kauft ihr auch Spiele und Controller?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         <strong>Konsolenspiele:</strong> Ja, kaufen wir an. Bitte vollständig in Hülle.<br>
         <strong>PC-Spiele:</strong> Normalerweise nicht.<br>
         <strong>Controller:</strong> Ja, gerne mit Ladekabel — erhöht den Gesamtpreis.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -424,9 +426,9 @@
         <strong>Was muss ich vor dem Verkauf der Konsole tun?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Konten abmelden (PSN, Xbox Live, Nintendo Account) und die Konsole auf <span class="highlight">Werkseinstellungen zurücksetzen</span>. So sind deine Daten geschützt und wir können die Konsole direkt weiterverkaufen — was auch deinen Ankaufpreis erhöht.
-      </div>
+      </div></div>
     </div>
   </div>
  
@@ -442,9 +444,9 @@
         <strong>Kauft ihr Luxusuhren wie Rolex an?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Ja, hochwertige Luxusuhren sind grundsätzlich interessant für uns. Wichtig: <span class="highlight">Nur mit nachvollziehbarer Herkunft</span>. Die Uhr wird vor Ort geprüft. Fälschungen werden grundsätzlich nicht angekauft.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -452,9 +454,9 @@
         <strong>Brauche ich Papiere oder Box für meine Luxusuhr?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Originalpapiere und Box sind kein Muss, erhöhen aber deutlich den Ankaufpreis. Wichtiger ist die <span class="highlight">nachvollziehbare Herkunft</span> — du brauchst deinen Ausweis und solltest erklären können, woher die Uhr stammt.
-      </div>
+      </div></div>
     </div>
   </div>
  
@@ -470,9 +472,9 @@
         <strong>Kauft ihr Werkzeug an?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Ja, aber <span class="highlight">nur hochwertige Markenwerkzeuge</span>. Günstige Baumarktgeräte werden normalerweise nicht angekauft. Akkuwerkzeug muss testbar sein.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -480,7 +482,7 @@
         <strong>Kauft ihr Haushaltsgeräte an?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Nur hochwertige Geräte bekannter Marken. Interessant sind z.B.:
         <ul>
           <li>Thermomix / Vorwerk</li>
@@ -489,7 +491,7 @@
           <li>Vergleichbare Premiummarken</li>
         </ul>
         Standard-Haushaltsgeräte von Discountern werden nicht angekauft.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -497,9 +499,9 @@
         <strong>Kauft ihr E-Bikes an?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Ja, E-Bikes können grundsätzlich interessant sein. Ruf uns am besten vorher kurz an: <a href="tel:04316004839" style="color:var(--accent);">0431 6004839</a> — damit wir schauen können ob wir gerade Bedarf haben und was wir anbieten können.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -507,9 +509,9 @@
         <strong>Kann ich euch Fotos schicken bevor ich vorbeikomme?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Ja, das ist möglich. Ruf einfach an oder schreib uns — wir können einen ersten Eindruck geben. <span class="highlight">Verbindliche Preise</span> können aber ausschließlich unsere Mitarbeiter nach Prüfung der Ware vor Ort nennen.
-      </div>
+      </div></div>
     </div>
   </div>
  
@@ -525,7 +527,7 @@
         <strong>Wie läuft der Ankauf bei ONE 2 BUY ab?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Ganz einfach in 3 Schritten:
         <ul>
           <li><span class="highlight">1. Vorbeikommen</span> — Gerät/Gold mitbringen, Ausweis nicht vergessen</li>
@@ -533,7 +535,7 @@
           <li><span class="highlight">3. Zahlung</span> — wenn der Preis passt, bekommst du sofort dein Geld</li>
         </ul>
         Kein Versand, kein Warten, keine Überraschungen.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -541,7 +543,7 @@
         <strong>Wie zahlt ihr aus?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Wir zahlen auf deine Wahl:
         <ul>
           <li><span class="highlight">Bargeld</span> — sofort, direkt</li>
@@ -550,7 +552,7 @@
           <li>Überweisung</li>
         </ul>
         Bei den meisten Kunden: <span class="highlight">Bar auf die Hand</span> — das geht am schnellsten.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -558,9 +560,9 @@
         <strong>Muss ich verkaufen wenn mir der Preis nicht passt?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Nein. Die Bewertung ist <span class="highlight">völlig kostenlos und unverbindlich</span>. Wenn dir unser Angebot nicht passt, nimmst du dein Gerät einfach wieder mit. Kein Druck, keine Kosten.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -568,9 +570,9 @@
         <strong>Kann ich Geräte reservieren?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Reservierungen sind nur <span class="highlight">gegen Anzahlung</span> möglich. Nicht abgeholte Ware kann nach Fristablauf wieder verkauft werden.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -578,9 +580,9 @@
         <strong>Gibt es Gewährleistung auf gekaufte Geräte?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Ja. Gebrauchtware unterliegt der <span class="highlight">gesetzlichen Gewährleistung</span>.
-      </div>
+      </div></div>
     </div>
  
     <div class="faq-item">
@@ -588,9 +590,9 @@
         <strong>Kauft ihr auch größere Mengen — z.B. Haushaltsauflösung?</strong>
         <div class="faq-toggle">+</div>
       </div>
-      <div class="faq-a">
+      <div class="faq-a"><div class="faq-a-inner">
         Ja. Bei mehreren Geräten oder größeren Mengen ruf vorher kurz an: <a href="tel:04316004839" style="color:var(--accent);">0431 6004839</a>. Dann können wir alles in Ruhe bewerten und du bekommst einen Gesamtpreis.
-      </div>
+      </div></div>
     </div>
   </div>
  
@@ -668,26 +670,7 @@
 <script is:inline>
   document.querySelectorAll('.faq-q').forEach(function (q) {
     q.addEventListener('click', function () {
-      var item = q.closest('.faq-item');
-      var answer = item.querySelector('.faq-a');
-      var isOpen = item.classList.contains('open');
-
-      if (isOpen) {
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-        requestAnimationFrame(function () {
-          answer.style.maxHeight = '0px';
-        });
-        item.classList.remove('open');
-      } else {
-        item.classList.add('open');
-        answer.style.maxHeight = answer.scrollHeight + 'px';
-        answer.addEventListener('transitionend', function onEnd(e) {
-          if (e.propertyName === 'max-height' && item.classList.contains('open')) {
-            answer.style.maxHeight = 'none';
-          }
-          answer.removeEventListener('transitionend', onEnd);
-        });
-      }
+      q.closest('.faq-item').classList.toggle('open');
     });
   });
 
