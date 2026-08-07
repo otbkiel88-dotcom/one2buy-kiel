@@ -54,8 +54,8 @@
   .faq-q strong { font-size: 0.97rem; font-weight: 600; line-height: 1.4; }
   .faq-toggle { width: 26px; height: 26px; background: var(--surface2); border-radius: 6px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 1.1rem; color: var(--accent); transition: transform 0.25s, background 0.2s; }
   .faq-item.open .faq-toggle { transform: rotate(45deg); background: var(--accent); color: #000; }
-  .faq-a { display: none; padding: 0 22px 20px; color: #bbb; font-size: 0.93rem; border-top: 1px solid var(--border); padding-top: 16px; }
-  .faq-item.open .faq-a { display: block; }
+  .faq-a { max-height: 0; overflow: hidden; padding: 0 22px; color: #bbb; font-size: 0.93rem; border-top: 0px solid var(--border); transition: max-height 0.35s ease, padding 0.35s ease; }
+  .faq-item.open .faq-a { padding: 16px 22px 20px; border-top: 1px solid var(--border); }
   .faq-a ul { list-style: none; margin-top: 8px; }
   .faq-a ul li::before { content: "→ "; color: var(--accent); font-weight: 700; }
   .faq-a ul li { margin-bottom: 5px; }
@@ -119,14 +119,14 @@
 </div>
  
 <div class="cat-nav">
-  <button class="cat-btn active" onclick="jumpTo('allgemein', this)">Allgemein</button>
-  <button class="cat-btn" onclick="jumpTo('iphone', this)">iPhones & Smartphones</button>
-  <button class="cat-btn" onclick="jumpTo('gold', this)">Gold & Schmuck</button>
-  <button class="cat-btn" onclick="jumpTo('elektronik', this)">Laptops & Elektronik</button>
-  <button class="cat-btn" onclick="jumpTo('konsolen', this)">Spielekonsolen</button>
-  <button class="cat-btn" onclick="jumpTo('uhren', this)">Luxusuhren</button>
-  <button class="cat-btn" onclick="jumpTo('sonstiges', this)">Weiteres</button>
-  <button class="cat-btn" onclick="jumpTo('ablauf', this)">Ablauf & Zahlung</button>
+  <button class="cat-btn active" data-target="allgemein">Allgemein</button>
+  <button class="cat-btn" data-target="iphone">iPhones & Smartphones</button>
+  <button class="cat-btn" data-target="gold">Gold & Schmuck</button>
+  <button class="cat-btn" data-target="elektronik">Laptops & Elektronik</button>
+  <button class="cat-btn" data-target="konsolen">Spielekonsolen</button>
+  <button class="cat-btn" data-target="uhren">Luxusuhren</button>
+  <button class="cat-btn" data-target="sonstiges">Weiteres</button>
+  <button class="cat-btn" data-target="ablauf">Ablauf & Zahlung</button>
 </div>
  
 <div class="faq-wrap">
@@ -139,7 +139,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Was ist ONE 2 BUY und was macht ihr genau?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -149,7 +149,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Muss ich einen Termin machen?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -159,7 +159,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Was brauche ich beim Verkauf?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -169,7 +169,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr auch defekte oder kaputte Geräte?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -179,7 +179,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Was kauft ihr grundsätzlich NICHT an?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -197,7 +197,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Gibt es einen Versandankauf?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -215,7 +215,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Wo kann ich in Kiel mein iPhone verkaufen?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -225,7 +225,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Welche Smartphones kauft ihr an?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -241,7 +241,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Muss das iPhone entsperrt und aus iCloud ausgeloggt sein?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -251,7 +251,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Wie viel bekomme ich für mein iPhone?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -261,7 +261,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Brauche ich das Ladegerät oder die Originalbox?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -279,7 +279,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Goldankauf Kiel — kauft ihr Gold und Schmuck?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -289,7 +289,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Wie wird der Goldpreis berechnet?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -299,7 +299,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Werden Diamanten und Edelsteine extra bewertet?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -309,7 +309,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr auch kaputten Schmuck oder Einzelteile?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -327,7 +327,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr MacBooks und Windows-Laptops an?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -337,7 +337,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr Gaming-PCs an?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -347,7 +347,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr Tablets, Smartwatches und Kopfhörer?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -363,7 +363,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr Fernseher an?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -373,7 +373,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr Kameras und Drohnen?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -392,7 +392,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr PlayStation, Xbox und Nintendo an?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -408,7 +408,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr auch Spiele und Controller?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -420,7 +420,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Was muss ich vor dem Verkauf der Konsole tun?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -438,7 +438,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr Luxusuhren wie Rolex an?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -448,7 +448,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Brauche ich Papiere oder Box für meine Luxusuhr?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -466,7 +466,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr Werkzeug an?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -476,7 +476,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr Haushaltsgeräte an?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -493,7 +493,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr E-Bikes an?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -503,7 +503,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kann ich euch Fotos schicken bevor ich vorbeikomme?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -521,7 +521,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Wie läuft der Ankauf bei ONE 2 BUY ab?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -537,7 +537,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Wie zahlt ihr aus?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -554,7 +554,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Muss ich verkaufen wenn mir der Preis nicht passt?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -564,7 +564,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kann ich Geräte reservieren?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -574,7 +574,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Gibt es Gewährleistung auf gekaufte Geräte?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -584,7 +584,7 @@
     </div>
  
     <div class="faq-item">
-      <div class="faq-q" onclick="toggle(this)">
+      <div class="faq-q">
         <strong>Kauft ihr auch größere Mengen — z.B. Haushaltsauflösung?</strong>
         <div class="faq-toggle">+</div>
       </div>
@@ -665,15 +665,40 @@
 }
 </script>
  
-<script>
-  function toggle(el) {
-    el.parentElement.classList.toggle('open');
-  }
-  function jumpTo(id, btn) {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth', block: 'start' });
-    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-  }
+<script is:inline>
+  document.querySelectorAll('.faq-q').forEach(function (q) {
+    q.addEventListener('click', function () {
+      var item = q.closest('.faq-item');
+      var answer = item.querySelector('.faq-a');
+      var isOpen = item.classList.contains('open');
+
+      if (isOpen) {
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        requestAnimationFrame(function () {
+          answer.style.maxHeight = '0px';
+        });
+        item.classList.remove('open');
+      } else {
+        item.classList.add('open');
+        answer.style.maxHeight = answer.scrollHeight + 'px';
+        answer.addEventListener('transitionend', function onEnd(e) {
+          if (e.propertyName === 'max-height' && item.classList.contains('open')) {
+            answer.style.maxHeight = 'none';
+          }
+          answer.removeEventListener('transitionend', onEnd);
+        });
+      }
+    });
+  });
+
+  document.querySelectorAll('.cat-btn').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      var target = document.getElementById(btn.dataset.target);
+      if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.querySelectorAll('.cat-btn').forEach(function (b) { b.classList.remove('active'); });
+      btn.classList.add('active');
+    });
+  });
 </script>
  
 </body>
